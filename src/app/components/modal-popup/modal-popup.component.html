@@ -1,0 +1,55 @@
+<!-- create pin -->
+<!-- <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1"> -->
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="cardStyle modal-content">
+            <form #createPinForm ="ngForm" action="" method="post" name="signupForm" id="signupForm" (ngSubmit)="onCreatePin(createPinForm.value)">
+                <div class="modal-header">
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="">
+                    <h2 class="modal-title" id="formTitle">
+                        Create Pin
+                    </h2>
+                </div>
+
+                <div class="inputDiv">
+                    <label class="inputLabel" for="pin">Pin</label>
+                    <input type="password" id="pin" name="userPin" placeholder="Must be 4 digits long" inputmode="numeric"
+                        maxlength="4" required ngModel>
+                </div>
+
+                <div class="inputDiv">
+                    <label class="inputLabel" for="confirmpin">Confirm Pin</label>
+                    <input type="password" id="confirmpin" name="confirmpin" placeholder="Re-enter your pin"
+                        inputmode="numeric" maxlength="4" required ngModel>
+                </div>
+
+                <div class="inputDiv">
+                    <label class="inputLabel" for="question">Security question</label>
+                    <select id="question" name="question" required ngModel>
+                        <option value="">Select a security question</option>
+                                <option>What city were you born in?</option>
+                                <option>What is your oldest sibling middle name?</option>
+                                <option>In what city or town did your parents meet?</option>
+                                <option>What is the make and model of your first car?</option>
+                                <option>What was the first concert you attended?</option>
+                    </select>
+                </div>
+
+                <div class="inputDiv">
+                    <label class="inputLabel" for="answer">Security Answer</label>
+                    <textarea id="answer" name="answer" placeholder="Answer"
+                     required ngModel></textarea>
+                </div>
+
+                <div class="buttonWrapper">
+                    <button type="submit" id="submitButton" class="submitButton pure-button pure-button-primary">
+                        <span>Create</span>
+                    </button>
+                   
+                </div>
+            </form>
+        </div>
+    </div>
+<!-- </div> -->

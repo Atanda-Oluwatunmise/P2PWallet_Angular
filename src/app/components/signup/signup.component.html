@@ -1,0 +1,82 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row border rounded-3 p-3 bg-white shadow box-area">
+        
+        <!-- right container -->
+        <div class="">
+            <div class="row align-items-center">
+                <div class="header-text mb-4">
+                    <h2 class="text-center mt-2">Register</h2>
+                    <!-- <p>We are happy to have you back</p> -->
+                </div>
+                <form [formGroup] ="signupForm">
+                <div class="row">
+                <div class="input-group mb-2 col formInput">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                    <input formControlName="username" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Username">
+                    <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('required', 'username')" class="text-danger">*required</small>
+                </div>
+
+                <div class="input-group mb-2 col formInput">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                    <input formControlName="firstname" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="First name">
+                    <small *ngIf="signupForm.controls['firstname'].dirty && signupForm.hasError('required', 'firstname')" class="text-danger">*required</small>
+                </div>
+                </div>
+                <div class="row">
+                <div class="input-group mb-2 col formInput">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                    <input formControlName="lastname" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Last name">
+                    <small *ngIf="signupForm.controls['lastname'].dirty && signupForm.hasError('required', 'lastname')" class="text-danger">*required</small>
+                </div>
+
+                <div class="input-group mb-2 col formInput">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                    <input formControlName="email" type="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email">
+                    <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required', 'email')" class="text-danger">*required</small>
+                </div>
+
+                </div>
+                <div class="row">
+                <div class="input-group mb-2 col formInput">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                    <input formControlName="phonenumber" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Phone number">
+                    <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('required', 'phonenumber')" class="text-danger">*required</small>
+                </div>
+
+                <div class="input-group mb-2 col formInput">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-inbox"></i></span>
+                    <input formControlName="address" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Address">
+                    <small *ngIf="signupForm.controls['address'].dirty && signupForm.hasError('required', 'address')" class="text-danger">*required</small>
+                </div>
+
+                </div>
+                <div class="row">
+                <div class="input-group mb-2 col formInput">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                    <input formControlName="password" [type]="type" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                    <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required', 'password')" class="text-danger">*required</small>
+                </div>
+
+                <div class="input-group mb-2 col formInput">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                    <input formControlName="confirmpassword" [type]="type" class="form-control form-control-lg bg-light fs-6" placeholder="Confirm Password">
+                    <small *ngIf="signupForm.controls['confirmpassword'].dirty && signupForm.hasError('required', 'confirmpassword')" class="text-danger">*required</small>
+                    <small *ngIf="signupForm.controls['confirmedValidator']" class="text-danger">*Password must match</small>
+                </div>
+
+                </div>
+                </form>
+                <div class="mt-4 d-flex justify-content-center">
+                    <div class="row g-3">
+                        <div class="input-group mb-3 col-12">
+                            <button (click) = "onSubmit()" class="btn btn-lg btn-primary w-100 fs-6">Submit</button>
+                        </div>
+                    </div>
+                </div>    
+                    <div class="row siguplink text-center">
+                        <small>Already have an account? <a routerLink="/login" class="text-decoration-none">Login</a></small>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

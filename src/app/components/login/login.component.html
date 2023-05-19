@@ -1,0 +1,46 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row border rounded-3 p-3 bg-white shadow box-area">
+        <!-- leftcontainer -->
+        <div class="col-md-6 rounded-3 d-flex justify-content-center align-items-center flex-column left-box" style="background: #53277E;">
+            <div class="featuredImage mb-3">
+                <img src="/assets/walletIcon.png" class="img-fluid" style="width: 250px;">
+            </div>
+            <!-- <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight:600;">Easy transactions</p> -->
+            <!-- <small class="text-white text-wrap text-center">Use our services and be free from being embarrassed at restaurants...</small> -->
+        </div>
+
+        <!-- right container -->
+        <div class="col-md-6 right-box">
+            <div class="row align-items-center">
+                <div class="header-text mb-4">
+                    <h2 class="text-center mt-2">Login</h2>
+                    <!-- <p>We are happy to have you back</p> -->
+                </div>
+                <form [formGroup] ="loginForm">
+                    <div class="input-group ">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                        <input formControlName="username" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Username">
+                    </div>
+                    <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required', 'username')" class="text-danger">*Username is required</small>
+                    <div class="input-group mt-4">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                        <input formControlName="password" [type]="type" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                        <span (click) = "hideShowPassword()" class="input-group-text fa {{eyeIcon}}"></span>
+                    </div>
+                    <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')" class="text-danger">*Password is required</small>
+                </form>
+                <div class="input-group mb-4 d-flex justify-content-between">
+                    <div class="forgot">
+                        <small><a href="#" class="text-decoration-none text-black forgot-text">Forgot Password?</a></small>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <button (click)="onLogin()" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+                </div>
+                <div class="row siguplink">
+                    <small>Don't have account? <a routerLink = "/signup" class="text-decoration-none">Sign up</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
