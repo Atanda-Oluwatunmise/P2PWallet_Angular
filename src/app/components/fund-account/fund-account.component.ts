@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, SecurityContext } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
 declare var window: any;
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-fund-account',
@@ -18,7 +19,7 @@ export class FundAccountComponent {
   }
   formModal: any;
 
-  constructor(private api: ApiService, private matdialog: MatDialog){}
+  constructor(private api: ApiService, private matdialog: MatDialog, public sanitizer: DomSanitizer){}
 
   ngOnInit(): void{
     this.api.getuserDetails()
@@ -38,13 +39,13 @@ fundAccount(){
   .subscribe((res: any)=>{
     console.log(res);
     if (res.status == true){
-      window.open(res.data.data.authorization_url);
+      //window.open(res.data.data.authorization_url);
       this.url = res.data.data.authorization_url;
+      this.sanitizer.sanitize(SecurityContext.URL, this.url)
       console.log(this.url);
-      this.formModal.show();
+      //this.formModal.show();
       //this.matdialog.open(res.data.data.authorization_url);
     }
   })
 }
-
 }

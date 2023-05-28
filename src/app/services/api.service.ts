@@ -16,11 +16,29 @@ export class ApiService {
   //inject the httpclient
   constructor(private http: HttpClient, private router: Router) { }
 
+  uploadImage(imgobj: any){
+    return this.http.post(`${this.userbaseUrl}uploadimage`, imgobj);
+  }
+
+  verifyImageStatus(){
+    return this.http.get<any>(`${this.userbaseUrl}verifyimagestatus`);
+  }
+  displayImage(){
+    return this.http.get<any>(`${this.userbaseUrl}displayimage`);
+  }
   getuserDetails(){
     return this.http.get<any>(`${this.userbaseUrl}accountdetails`);
   }
   getuserAccountDetails(acctobj: any){
     return this.http.post(`${this.userbaseUrl}userdetails`, acctobj);
+  }
+
+  editInfo(infoobj: any){
+    return this.http.put(`${this.userbaseUrl}editinfo`, infoobj);
+  }
+
+  deleteImage(){
+    return this.http.delete(`${this.userbaseUrl}deleteimage`);
   }
   
   getTransactionHistory(){

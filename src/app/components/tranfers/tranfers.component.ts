@@ -45,10 +45,8 @@ export class TranfersComponent {
 
   onCompleteTransaction(details: { accountSearch: string, amount: any }) {
     this.pinObect["userPin"] = this.pin
-
     this.btn = document.getElementById('submitButton') as HTMLButtonElement | null;
     this.btn?.setAttribute('disabled', '');
-
     this.api.verifyUserPin(this.pinObect)
       .subscribe((res: any) => {
         console.log(res)

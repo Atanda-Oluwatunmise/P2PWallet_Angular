@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./paystack-component.component.css']
 })
 export class PaystackComponentComponent {
+  public url = "";
+  constructor(){}
+
+  loadUrl(param:any){
+    return param;
+  }
 
 }

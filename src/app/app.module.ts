@@ -22,7 +22,11 @@ import { FundAccountComponent } from './components/fund-account/fund-account.com
 import { DatePipe } from '@angular/common';
 import { ModalPopupComponent } from './components/modal-popup/modal-popup.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { PaystackComponentComponent } from './components/paystack-component/paystack-component.component'
+import { PaystackComponentComponent } from './components/paystack-component/paystack-component.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { ChangePinComponent } from './components/change-pin/change-pin.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { EditInfoComponent } from './components/edit-info/edit-info.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch:'full'},
@@ -44,6 +48,10 @@ const appRoutes: Routes = [
     FundAccountComponent,
     ModalPopupComponent,
     PaystackComponentComponent,
+    ProfilePageComponent,
+    ChangePinComponent,
+    ChangePasswordComponent,
+    EditInfoComponent,
   ],
   imports: [
     BrowserModule,

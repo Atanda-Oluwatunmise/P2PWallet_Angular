@@ -17,7 +17,6 @@
                             <a routerLink="/tranfers" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
                                 <span class="fs-5 -outlined rzi">wallet</span>
                                 <span class="ms-3 d-none d-sm-inline fs-6">Transfers</span> </a>
-
                         </li>
                         <li class="nav-item py-2 py-sm-0">
                             <a routerLink="/fundaccount" class="nav-link px-0 align-middle text-white">
@@ -25,27 +24,31 @@
                                 <span class="ms-3 d-none d-sm-inline fs-6">Fund Account</span></a>
                         </li>
                         <li class="nav-item py-2 py-sm-0">
-                            <a href="/" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white collapsed" data-target="#submenu1">
                                 <span class="fs-5 -outlined rzi">settings</span>
-                                <span class="ms-3 d-none d-sm-inline fs-6">Profile Settings</span></a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="/" class="nav-link px-0 text-white"> <span
-                                            class="d-none d-sm-inline"></span> Account</a>
+                                <span class="ms-3 d-sm-inline fs-6">Profile Settings</span>
+                            </a>
+                                <div class="collapse" id="submenu1" aria-expanded="false">
+                                    <ul class="flex-column pl-2 nav">
+                                <li class="nav-item">
+                                        <a routerLink="/profilepage" class="nav-link px-4 text-dark"> 
+                                            <i class="fa fa-home text-center mr-1"></i> 
+                                            <span class="d-none d-sm-inline ms-3"></span> Account</a>
                                 </li>
-                                <li>
-                                    <a href="/" class="nav-link px-0 text-white"> <span
-                                            class="d-none d-sm-inline"></span> Profile Picture</a>
+                                
+                                <li class="nav-item">
+                                    <a  routerLink="/changepassword" class="nav-link px-4 text-dark"> 
+                                        <i class="fa fa-key text-center mr-1"></i> 
+                                        <span class="d-none d-sm-inline ms-3"></span>Password</a>
                                 </li>
-                                <li>
-                                    <a href="/" class="nav-link px-0 text-white"> <span
-                                            class="d-none d-sm-inline"></span> Password</a>
-                                </li>
-                                <li>
-                                    <a href="/" class="nav-link px-0 text-white"> <span
-                                            class="d-none d-sm-inline"></span> Pin</a>
+
+                                <li class="nav-item">
+                                    <a  routerLink="/changepin" class="nav-link px-4 text-dark"> 
+                                        <i class="fa fa-user text-center mr-1"></i> 
+                                            <span class="d-none d-sm-inline ms-3"></span>Pin</a>
                                 </li>
                             </ul>
+                            </div>
                         </li>
                     </ul>
                     <div class="dropdown pb-4 nav-item py-2 py-sm-0">
@@ -58,5 +61,6 @@
                     </div>
                 </div>
             </div>
+            <router-outlet></router-outlet>
         </div>
     <!-- </div> -->

@@ -7,17 +7,30 @@ import { TranfersComponent } from './components/tranfers/tranfers.component';
 import { AuthGuard } from './guards/auth.guard';
 import { FundAccountComponent } from './components/fund-account/fund-account.component';
 import { ModalPopupComponent } from './components/modal-popup/modal-popup.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { ChangePinComponent } from './components/change-pin/change-pin.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { EditInfoComponent } from './components/edit-info/edit-info.component';
 
 //configure the routing in the app module
 const routes: Routes = [
   //configuring routing ,if path? load component
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: "tranfers", component: TranfersComponent, canActivate: [AuthGuard]},
-  {path: "fundaccount", component: FundAccountComponent, canActivate: [AuthGuard]},
-  {path: "modalpopup", component: ModalPopupComponent, canActivate: [AuthGuard]}
- 
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: "tranfers", component: TranfersComponent, canActivate: [AuthGuard] },
+  { path: "fundaccount", component: FundAccountComponent, canActivate: [AuthGuard] },
+  { path: "modalpopup", component: ModalPopupComponent, canActivate: [AuthGuard] },
+  // {path: "profilepage", component:ProfilePageComponent, canActivate: [AuthGuard]},
+  {
+    path: "profilepage",
+    children: [
+      { path: "", component: ProfilePageComponent, canActivate: [AuthGuard] },
+      { path: "editinfo", component: EditInfoComponent, canActivate: [AuthGuard] },
+    ]
+  },
+  { path: "changepin", component: ChangePinComponent, canActivate: [AuthGuard] },
+  { path: "changepassword", component: ChangePasswordComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
@@ -26,9 +39,13 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents = [
-            LoginComponent,
-            SignupComponent,
-            DashboardComponent,
-            TranfersComponent,
-            FundAccountComponent
+  LoginComponent,
+  SignupComponent,
+  DashboardComponent,
+  TranfersComponent,
+  FundAccountComponent,
+  ProfilePageComponent,
+  ChangePinComponent,
+  ChangePasswordComponent,
+  EditInfoComponent
 ]
