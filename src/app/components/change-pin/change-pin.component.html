@@ -13,26 +13,25 @@
                         <div class="card-body p-4">
                                 <h3 class="pinHeading mb-4 mt-4">Pin Settings</h3>
 
-                          <form class="editForm">
+                          <form #editPin="ngForm" class="editForm" (ngSubmit)="submitInfo(editPin.value)">
                                 <label for="firstname" class="profile-main__input-label">Old Pin</label>
-                                <input type="password" class="profile-main__input">
+                                <input type="password" class="profile-main__input" name="currentPin" ngModel>
                                 <label for="firstname" class="profile-main__input-label">Security Question</label>
-                                <textarea type="text" class="profile-main__input"></textarea>
+                                <textarea type="text" class="profile-main__input" value="{{resQuestion.question}}" disabled></textarea>
                                 <label for="firstname" class="profile-main__input-label">Security Answer</label>
-                                <input type="text" class="profile-main__input">
+                                <input type="text" class="profile-main__input" name="answer" ngModel>
                                 <div class="row g-2">
                                 <div class="col-md">
                                 <label for="firstname" class="profile-main__input-label">New Pin</label>
-                                <input type="password" class="profile-main__input">
+                                <input type="password" class="profile-main__input" name="newPin" ngModel>
                                 </div>
                                 <div class="col-md">
                                 <label for="firstname" class="profile-main__input-label">Confirm Pin</label>
-                                <input type="password" class="profile-main__input">
+                                <input type="password" class="profile-main__input" name="confirmPin" ngModel>
                                 </div>
                                 </div>
+                                <button type="submit" id="changePinBtn" class="submitButton__pin pure-button pure-button-primary pt-2"><span>Save</span></button>
                           </form>
-
-                          <button type="button" id="changePinBtn" class="submitButton__pin pure-button pure-button-primary pt-2"><span>Save</span></button>
                         </div>
                       </div>
                     </div>
@@ -42,6 +41,16 @@
             </div>
           <!-- </section> -->
           <router-outlet></router-outlet>
+
+          <div id="overlay">
+            <span id="nav" *ngIf="saveInProgress">
+                <div class="submit-message" style="display: block; color: #FFFFFF; position: fixed; left: 50%; top: 40%;">
+                    <h3><div class="spinner-border text-dark" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div></h3>
+                </div>
+            </span>
+        </div>
     </div>
 </div>
 

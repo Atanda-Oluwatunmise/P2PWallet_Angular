@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './edit-info.component.html',
   styleUrls: ['../dashboard/dashboard.component.css']
 })
-export class EditInfoComponent {
+export class EditInfoComponent implements OnInit {
 
   //public details: any = [];
   public element: any;
@@ -27,12 +27,14 @@ export class EditInfoComponent {
     address: new FormControl(''),
     phonenumber: new FormControl('')
   });
-   @Input() item: any = [];
+
+  @Input() dataa: any = [];
+  // details : any = [];
 
   constructor(public api: ApiService, public router: Router, public fb: FormBuilder) { }
 
   ngOnInit(): void {
-
+    console.log(this.dataa);
     this.api.displayImage()
       .subscribe({
         next: (res) => {

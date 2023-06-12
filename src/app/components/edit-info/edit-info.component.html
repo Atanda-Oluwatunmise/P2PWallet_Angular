@@ -23,15 +23,16 @@
                             <input (change)="handleFileInput($event)" id='input-file' type='file'accept="image/png, image/jpg"/>
                           </div>
                             </div>
-                            <div *ngFor="let detail of item">
-                                <label for="firstname" class="profile-main__input-label">{{item}}</label>
-                                <input type="text"  formControlName="firstName" class="profile-main__input" >
+                            <div>
+                              {{dataa}}
+                                <!-- <label for="firstname" class="profile-main__input-label">Firstname</label>
+                                <input type="text"  formControlName="firstName" class="profile-main__input" value="{{item}}">
                                 <label for="lastname" class="profile-main__input-label">Lastname</label>
-                                <input type="text"  formControlName="lastName" class="profile-main__input">
+                                <input type="text"  formControlName="lastName" class="profile-main__input" value="{{item.lastName}}">
                                 <label for="address" class="profile-main__input-label">Address</label>
-                                <input type="text"  formControlName="address" class="profile-main__input" >
+                                <input type="text"  formControlName="address" class="profile-main__input" value="{{item.address}}">
                                 <label for="phonenumber" class="profile-main__input-label">Phonenumber</label>
-                                <input type="text" formControlName="phonenumber" class="profile-main__input" >
+                                <input type="text" formControlName="phonenumber" class="profile-main__input" value="{{item.phonenumber}}"> -->
                             </div>
                               </form>
                           <button (click)="saveUserInfo($event)" type="submit" id="editButton" class="submitButton pure-button pure-button-primary"><span>Save</span></button>

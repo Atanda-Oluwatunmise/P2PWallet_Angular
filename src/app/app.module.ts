@@ -27,6 +27,8 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { ChangePinComponent } from './components/change-pin/change-pin.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { EditInfoComponent } from './components/edit-info/edit-info.component';
+import { AllTransactionsComponent } from './components/all-transactions/all-transactions.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch:'full'},
@@ -52,6 +54,8 @@ const appRoutes: Routes = [
     ChangePinComponent,
     ChangePasswordComponent,
     EditInfoComponent,
+    AllTransactionsComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
+import { TokenApiModel } from '../models/token.api.model';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -45,6 +47,23 @@ export class ApiService {
     return this.http.get<any>(`${this.transactionBaseUrl}transactionshistory`);
   }
 
+  getRecentTransactions(){
+    return this.http.get<any>(`${this.transactionBaseUrl}recenttransactions`);
+  }
+
+  getTransactionsByDate(detailsObj: any){
+    return this.http.post(`${this.transactionBaseUrl}usertransactionsbydate`,detailsObj);
+  }
+
+  downloadTransactions(){
+    return this.http.get(`${this.transactionBaseUrl}generatepdf`, { responseType: 'blob', observe: 'response' }).pipe(
+      // map((result:HttpResponse<Blob>) => {
+      //   console.log(result);
+      //   saveAs(result, "Quotation.pdf");
+      //   return result;
+      )};
+  
+
   createUserPin(pinObj: any){
     return this.http.post(`${this.authenticationUrl}createpin`, pinObj);
   }
@@ -65,7 +84,20 @@ export class ApiService {
     return this.http.get<any>(`${this.authenticationUrl}validateuser`);
   }
 
+  changePin(changepinObj: any){
+    return this.http.post(`${this.authenticationUrl}changepin`, changepinObj);
+  }
+
+  chagePassword(changepasswordObj: any){
+    return this.http.post(`${this.authenticationUrl}changepassword`, changepasswordObj);
+  }
+
+  getSecurityDetail(){
+    return this.http.get<any>(`${this.authenticationUrl}getsecuritydetail`);
+  }
+
   initializePayment(paymentobj: any){
     return this.http.post(`${this.paymentUrl}initializepayment`, paymentobj);
   }
+
 }

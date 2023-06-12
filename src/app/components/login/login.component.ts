@@ -48,6 +48,7 @@ export class LoginComponent {
           alert(res.statusMessage)
           this.loginForm.reset()
           this.auth.storeToken(res.data.token)
+          this.auth.storeRefreshToken(res.data.refreshToken)
           this.toastr.success('Successful', 'User logged in successfully')
           this.router.navigate(['dashboard']);  
         },

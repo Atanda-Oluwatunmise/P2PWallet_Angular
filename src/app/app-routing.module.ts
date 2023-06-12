@@ -11,6 +11,7 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { ChangePinComponent } from './components/change-pin/change-pin.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { EditInfoComponent } from './components/edit-info/edit-info.component';
+import { AllTransactionsComponent } from './components/all-transactions/all-transactions.component';
 
 //configure the routing in the app module
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   },
   { path: "changepin", component: ChangePinComponent, canActivate: [AuthGuard] },
   { path: "changepassword", component: ChangePasswordComponent, canActivate: [AuthGuard] },
+  { path: "alltransactions", component: AllTransactionsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
@@ -47,5 +49,6 @@ export const routingComponents = [
   ProfilePageComponent,
   ChangePinComponent,
   ChangePasswordComponent,
-  EditInfoComponent
+  EditInfoComponent,
+  AllTransactionsComponent
 ]

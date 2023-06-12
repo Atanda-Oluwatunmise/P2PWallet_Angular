@@ -33,11 +33,6 @@ public dateofTransaction: Date = new Date();
     this.postList();
   }
 
-  simpleAlert(){
-    Swal.fire('Hello world!');
-  }
-  
-
 
   postList(): void{
     this.api.validateuserPin()
@@ -77,7 +72,8 @@ public dateofTransaction: Date = new Date();
       this.users = res.data;
     })
 
-    this.api.getTransactionHistory()
+    // this.api.getTransactionHistory()
+    this.api.getRecentTransactions()
     .subscribe(res =>{
       console.log(res.data)
       this.tabledata = res.data
@@ -103,7 +99,9 @@ public dateofTransaction: Date = new Date();
     this.reverse = !this.reverse;
   }
 
-
+  goToTransactionsPage(){
+    this.router.navigate(["alltransactions"]);
+  }
 
 openPopup(){
   this.matdialog.open(ModalPopupComponent, { panelClass: 'mat-mdc-dialog-container' });

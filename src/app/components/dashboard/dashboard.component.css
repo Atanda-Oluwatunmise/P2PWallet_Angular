@@ -131,9 +131,18 @@ table #tbody tr:last-child td {
   border-bottom: none;
 }
 
+#allTxns a{
+ text-decoration: none;
+ padding-right: 25px;
+ color: #53277E;
+}
+
+#allTxns a:hover{
+  cursor: pointer;
+}
 .searchButton {
-  width: 37px;
-  height: 32px;
+  width: 41px;
+  height: 41px;
   border: 3px solid #53277E;
   background: #fff;
   text-align: center;
@@ -242,6 +251,10 @@ table #tbody tr:last-child td {
 .input-line label {
   color: #46545C;
   margin-bottom: 2px;
+}
+
+input[type="date"]{
+  margin-right: 20px;
 }
 
 .input-line input[type="text"],
@@ -402,6 +415,19 @@ button[disabled] {
 #fundPage #input-amount label {
   margin-top: 20px !important;
 }
+.embed-container {
+  position: relative;
+  padding-bottom: 70.75%;
+  height: 0;
+  overflow: hidden;
+  }
+  .embed-container iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  }
 
 /* modal component */
 :host {
@@ -557,4 +583,70 @@ button[disabled] {
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+} 
+
+/* date range page */
+.dateText {
+  margin-right: 63px;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 7px;
+}
+.headerDetail{
+  background: #fff;
+}
+
+.txnHeaderDetail{
+  display: flex;
+  justify-content: space-between;
+}
+
+.txnRoutes button{
+  margin-right: 20px;
+  border: none;
+  background: none;
+}
+
+#downloadTxns{
+  background: #53277E;
+  color: #fff;
+  padding: 9px;
+  border-radius: 10px;
+}
+
+.alltxnsHistory{
+  color: #53277E;
+}
+
+.crediTxns{
+  color: green;
+}
+
+.debitTxns{
+  color: red;
+}
+
+.noData{
+  margin-left: 20px;
+  color: red;
+}
+
+#searchBox {
+  margin-right: 520px;
+  border: none;
+  /* margin-bottom: 3px; */
 }

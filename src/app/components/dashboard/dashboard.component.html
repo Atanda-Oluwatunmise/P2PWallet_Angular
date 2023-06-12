@@ -43,19 +43,15 @@
                                 <div class="card-title">Account Balance</div>
                                 <div class="card-icon"><span
                                         class="material-symbols-outlined rzi">account_balance_wallet</span></div>
-                                <div class="card-data">{{user.balance.toLocaleString()}}</div>
+                                <div class="card-data"><span>&#x20A6;</span>{{user.balance.toLocaleString()}}</div>
                             </div>
                         </div>
 
                         <!-- transaction table -->
                         <div class="container-fluid py-4">
-
-
                             <div class="row">
                                 <div class="col-12">
-
-
-                                    <div class="search text-sm-end flex-end">
+                                    <!-- <div class="search text-sm-end flex-end">
                                         <input type="text" class="searchTerm" name="search" placeholder="Search"
                                             [(ngModel)]="searchText">
                                         <button type="submit" class="searchButton">
@@ -66,12 +62,15 @@
                                                 <i class="bi bi-pencil"></i>
                                             </span>
                                         </a>
+                                    </div> -->
+                                    <div>
+
                                     </div>
                                     <div class="card my-4">
 
                                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                                <h6 class="text-white text-uppercase px-2">Transactions</h6>
+                                                <h6 class="text-white text-uppercase px-2">Recent Transactions</h6>
                                             </div>
                                         </div>
                                         <div class="card-body px-0 pb-2">
@@ -80,6 +79,23 @@
                                                 <table class="table table-bordered align-items-center ">
                                                     <thead>
                                                         <tr>
+                                                            <th
+                                                                class="text-center  text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Sender&nbsp;</th>
+                                                            <th
+                                                                class="text-center  text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Amount&nbsp;</th>
+                                                            <th
+                                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Transaction Type&nbsp;</th>
+                                                            <th
+                                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Receiver&nbsp;</th>
+                                                            <th 
+                                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                Date&nbsp;</th>
+                                                        </tr>
+                                                        <!-- <tr>
                                                             <th (click)="sort('id')"
                                                                 class="text-center  text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                                 Sender&nbsp;<i class="fa fa-sort"></i></th>
@@ -95,12 +111,13 @@
                                                             <th (click)="sort('date')"
                                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                                 Date&nbsp;<i class="fa fa-sort"></i></th>
-                                                        </tr>
+                                                        </tr> -->
                                                     </thead>
                                                     <tbody id="table-body">
-                                                        <tr *ngFor="let data of tabledata | orderBy: key: reverse | search: searchText | paginate: {itemsPerPage: tableSize, 
+                                                        <tr *ngFor="let data of tabledata let i = index" id="sender">
+                                                        <!-- <tr *ngFor="let data of tabledata | orderBy: key: reverse | search: searchText | paginate: {itemsPerPage: tableSize, 
                                                             currentPage: page,
-                                                            totalItems: count}; let i = index" id="sender">
+                                                            totalItems: count}; let i = index" id="sender"> -->
                                                             <td>{{data.senderInfo}}</td>
                                                             <td>{{data.txnAmount}}</td>
                                                             <td><p [ngClass]="data.transType == 'CREDIT' ? 'badge bg-success': 'badge bg-danger'">{{data.transType}}</p></td>
@@ -109,7 +126,12 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <div>
+                                                <div class="text-sm-end flex-end" id="allTxns">
+                                                    <a (click)="goToTransactionsPage()">View all Transactions</a>
+                                                </div>
+
+
+                                                <!-- <div>
                                                     <div>
                                                         <select (change)="onTableSizeChange($event)">
                                                             <option *ngFor="let size of tableSizes">
@@ -120,7 +142,7 @@
                                                     <pagination-controls previousLabel="Prev" nextLabel="Next"
                                                         (pageChange)="onTableDataChange($event)">
                                                     </pagination-controls>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>

@@ -59,14 +59,13 @@ export class ProfilePageComponent {
       .subscribe((res) => {
         console.log(res.data);
         this.details = res.data;
+        console.log(this.details);
       })
   }
 
   url = "/assets/user.png"
 
   showPreview(e: any) {
-    // e = document.getElementById("input-file");
-    // console.log(`e ${e}`);
     if (e.target.files) {
       var reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
