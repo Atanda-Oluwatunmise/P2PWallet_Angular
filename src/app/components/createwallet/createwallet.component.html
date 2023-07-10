@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-body">
+        <div id="cardHeader">
+        <span (click)="closeModal()" class="material-symbols-outlined rzi">arrow_back</span>
+        <h5 class="card-title text-center mb-4">New Wallet</h5>
+        </div>
+        <div class="cardBody">
+            <h5>Choose a currency</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="checkBox1" value="NGN"
+                    disabled>
+                <label class="form-check-label" for="checkBox1">
+                   <span>&#8358;</span>NGN
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="checkBox2" value="USD"
+                    checked>
+                <label class="form-check-label" for="checkBox2">
+                    <span>&#36;</span>USD
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="checkBox3" value="EUR">
+                <label class="form-check-label" for="checkBox3">
+                    <span>&#8364;</span>EUR
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="checkBox4" value="GBP">
+                <label class="form-check-label" for="checkBox4">
+                    <span>&#163;</span>GBP
+                </label>
+            </div>
+        </div>
+        <a (click)="VerifyCurrency()" class="btn btn-primary">Create</a>
+    </div>
+</div>

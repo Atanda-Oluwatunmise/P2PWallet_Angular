@@ -1,0 +1,45 @@
+.form-check .form-check-input{
+    float: none !important;
+    margin-left: 0 !important;
+}
+
+.form-check-input[type=radio] {
+    border-radius: 20% !important;
+}
+
+.form-check-input:checked {
+    background-color: #53277E !important;
+    border-color: #53277E !important;
+}
+
+.form-check-label{
+    margin-left: 10px !important;
+}
+
+.btn-primary {
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+    display: block;
+    background-color: #53277E !important;
+    border-color: #53277E !important;
+
+}
+
+.card {
+    border: none !important;
+}
+
+.cardBody h5{
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.rzi {
+    font-family: "Material Icons Outlined";
+    color: red;
+}
+
+.rzi:hover{
+    cursor: pointer;
+}

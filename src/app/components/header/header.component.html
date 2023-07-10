@@ -1,66 +1,9 @@
     <!-- <div class="container-fluid"> -->
-        <div class="row flex-nowrap">
-
-            <div class="col-auto col sidenav">
-                <div class="d-flex flex-column justify-content-between px-1 pt-2 text-white min-vh-100">
-                    <!-- <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-           <span class="fs-6 d-none d-sm-inline">Menu</span>
-        </a> -->
-                    <ul class="nav nav-pills flex-column mt-4 mb-4" id="menu">
-                        <li class="nav-item py-4 py-sm-0 pb-3">
-                            <a routerLink="/dashboard" class="nav-link align-middle px-0 text-white active">
-                                <span class="fs-5 material-symbols-outlined rzi">dashboard</span>
-                                <span class="ms-3 d-none d-sm-inline fs-6">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="nav-item py-2 py-sm-0">
-                            <a routerLink="/tranfers" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-                                <span class="fs-5 -outlined rzi">wallet</span>
-                                <span class="ms-3 d-none d-sm-inline fs-6">Transfers</span> </a>
-                        </li>
-                        <li class="nav-item py-2 py-sm-0">
-                            <a routerLink="/fundaccount" class="nav-link px-0 align-middle text-white">
-                                <span class="fs-5 -outlined rzi">payments</span>
-                                <span class="ms-3 d-none d-sm-inline fs-6">Fund Account</span></a>
-                        </li>
-                        <li class="nav-item py-2 py-sm-0">
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white collapsed" data-target="#submenu1">
-                                <span class="fs-5 -outlined rzi">settings</span>
-                                <span class="ms-3 d-sm-inline fs-6">Profile Settings</span>
-                            </a>
-                                <div class="collapse" id="submenu1" aria-expanded="false">
-                                    <ul class="flex-column pl-2 nav">
-                                <li class="nav-item">
-                                        <a routerLink="/profilepage" class="nav-link px-4 text-dark"> 
-                                            <i class="fa fa-home text-center mr-1"></i> 
-                                            <span class="d-none d-sm-inline ms-3"></span> Account</a>
-                                </li>
-                                
-                                <li class="nav-item">
-                                    <a  routerLink="/changepassword" class="nav-link px-4 text-dark"> 
-                                        <i class="fa fa-key text-center mr-1"></i> 
-                                        <span class="d-none d-sm-inline ms-3"></span>Password</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a  routerLink="/changepin" class="nav-link px-4 text-dark"> 
-                                        <i class="fa fa-user text-center mr-1"></i> 
-                                            <span class="d-none d-sm-inline ms-3"></span>Pin</a>
-                                </li>
-                            </ul>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="dropdown pb-4 nav-item py-2 py-sm-0">
-                        <a (click)="logout()"
-                            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-                            id="logout">
-                            <span class="fs-5 -outlined rzi">logout</span>
-                            <span class="ms-3 nav-link px-0 align-middle text-white fs-6">Logout</span>
-                        </a>
-                    </div>
-                </div>
+        <div class="navContainer">
+            <img class="headerImg" src="assets/bankifyimg.png">
+            <div class="usersName" class="sideHeader">
+            <span class="material-symbols-outlined rzi notification">notifications</span>
+            <img src="/assets/user.png" class="profilePicture" alt="Avatar"/>
+            <div class="usersName">Welcome <span></span></div>
             </div>
-            <router-outlet></router-outlet>
         </div>
-    <!-- </div> -->

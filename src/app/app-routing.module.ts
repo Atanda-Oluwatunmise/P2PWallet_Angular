@@ -12,6 +12,9 @@ import { ChangePinComponent } from './components/change-pin/change-pin.component
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { EditInfoComponent } from './components/edit-info/edit-info.component';
 import { AllTransactionsComponent } from './components/all-transactions/all-transactions.component';
+import { TransactionstatementComponent } from './components/transactionstatement/transactionstatement.component';
+import { GeneratestatementComponent } from './components/generatestatement/generatestatement.component';
+import { CreatewalletComponent } from './components/createwallet/createwallet.component';
 
 //configure the routing in the app module
 const routes: Routes = [
@@ -33,6 +36,9 @@ const routes: Routes = [
   { path: "changepin", component: ChangePinComponent, canActivate: [AuthGuard] },
   { path: "changepassword", component: ChangePasswordComponent, canActivate: [AuthGuard] },
   { path: "alltransactions", component: AllTransactionsComponent, canActivate: [AuthGuard] },
+  { path: "transactionsstatement", component: TransactionstatementComponent, canActivate: [AuthGuard] },
+  { path: "generatestatement", component: GeneratestatementComponent, canActivate: [AuthGuard] },
+  { path: "createwallet", component: CreatewalletComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
@@ -50,5 +56,8 @@ export const routingComponents = [
   ChangePinComponent,
   ChangePasswordComponent,
   EditInfoComponent,
-  AllTransactionsComponent
+  AllTransactionsComponent,
+  TransactionstatementComponent,
+  GeneratestatementComponent,
+  CreatewalletComponent
 ]

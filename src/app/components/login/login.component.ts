@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import validateForm from 'src/app/helpers/validateForm';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent {
   eyeIcon: string = "fa-eye-slash";
 
    //inject important things, inject auth service, inject router
-   constructor(private fb: FormBuilder, private auth:AuthService, private router: Router, private toastr: ToastrService){}
+   constructor(private fb: FormBuilder, private loader: LoaderService,private auth:AuthService, private router: Router, private toastr: ToastrService){}
 
    //grouping form, use form-group
    loginForm!: FormGroup;
@@ -41,15 +42,17 @@ export class LoginComponent {
   onLogin() {
     if(this.loginForm.valid){
       //send object to the database
+      this.loader.setLoading(true);
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res) =>{
           // console.log(res)
-          alert(res.statusMessage)
+          // alert(res.statusMessage)
           this.loginForm.reset()
           this.auth.storeToken(res.data.token)
           this.auth.storeRefreshToken(res.data.refreshToken)
-          this.toastr.success('Successful', 'User logged in successfully')
+          // this.toastr.success('Successful', 'User logged in successfully')
+          this.loader.getLoading();
           this.router.navigate(['dashboard']);  
         },
         error: (err)=> {

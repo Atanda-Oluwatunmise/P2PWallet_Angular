@@ -1,0 +1,85 @@
+<div class=" row gutterFix">
+    <div class="colSide">
+        <app-header></app-header>
+    </div>
+        <div class="colMain">
+        <!-- content -->
+            <div class="col px-3 py-4">
+                <div class="container-fluid">
+                    <div class="mb-npx">
+                        <div class="row align-items-center">
+
+                             <div class="col-12 mb-4 p-3 headerDetail">
+                                <div class="txnHeaderDetail">
+                                    <h3 class="h5 mb-0 ls-tight">Transactions</h3>
+                                    <h3 class="h5 mb-0 ls-tight">
+                                        <span style="color: #aca8a8;"><small>Balance: </small></span> <span style="color: green;">&#x20A6;<span> NGN</span></span>
+                                    </h3>
+                                </div>    
+                            </div> 
+                        </div>
+                    </div>
+
+                    <!-- <div class="row mt-4" id="detailcard"> -->
+                        <!-- transaction table -->
+                        <div class="container-fluid py-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- <div class="txnRoutes d-inline-flex">
+                                        <button type="submit" class="alltxnsHistory" (click)="allTransactions()">All</button>
+                                        <button type="submit" class="crediTxns" (click)="creditTransactions()">Credit</button>
+                                        <button type="submit" class="debitTxns" (click)="debitTransactions()">Debit</button>
+                                        <div class="dropdown">
+                                        <button type="submit" id="downloadTxns">Download Transactions</button>
+                                        <div class="dropdown-content">
+                                            <a>                                      
+                                                  <button type="submit" value="Credit" class="crediTxns" id="creditHistory" (click)="generatecredithistory()">Credit Transactions</button>
+                                                </a>
+                                            <a>
+                                                <button type="submit" value="Debit" class="debitTxns" id="debitHistory" (click)="generatedebithistory()">Debit Transactions</button>
+                                            </a>
+                                            <a>
+                                                <button type="submit" value="All" class="alltxnsHistory" id="allHistory" (click)="generateallhistory()">All Transactions</button>
+                                            </a>
+                                        </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <hr> -->
+                                    <!-- <div class="dateText flex-end"><small>Search transactions by date</small></div> -->
+                                    <form #SearchTxns="ngForm">
+                                    <!-- <div class="search">
+                                        <input type="text" class="searchTerm" name="search" placeholder="Search"
+                                            [(ngModel)]="searchText">                    
+                                        </div>  -->
+                                    <div class="text-sm-end flex-end">
+                                        <input type="text" class="searchTerm" id="searchBox" name="search" placeholder="Search">
+                                        <input type="date" name="startDate" placeholder="Search" [(ngModel)]="startDate">
+                                        
+                                        <input type="date" name="endDate" placeholder="Search" [(ngModel)]="endDate">
+                                        <button type="submit" class="searchButton">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                    </form>
+<!--                                 
+                                    <div class="card my-4">
+
+                                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"> -->
+                                                <!-- <h6 class="text-white text-uppercase px-2">Transactions</h6> -->
+                                            <!-- </div>
+                                        </div>
+                                        <div class="card-body px-0 pb-2">
+                                            <div class="table-responsive p-0">
+                                                <div class="noData" style="display: none;" id="displayErr">
+                                                    <p>The table contains no entry!</p>
+                                                </div>
+
+                                            </div>
+                            </div> -->
+                        </div>
+                </div>
+            </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>

@@ -6,6 +6,44 @@ body {
   background: #ececec;
 }
 
+.navContainer{
+  position: relative;
+  padding: 8px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+
+}
+
+.headerImg{
+  width: 100px;
+  height: auto;
+  margin-left: 10px;
+}
+
+.profilePicture{
+  width: 30px;
+  height: auto;
+}
+
+.sideHeader {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.sideHeader:last-child{
+
+  gap: 0.5rem; 
+}
+.usersName{
+  font-size: 10px;
+  font-weight: 50;
+  margin-right: 10px;
+}
+
 .sidenav {
   background-color: #fff;
   position: sticky;
@@ -59,6 +97,98 @@ body {
   background-color: #53277E;
   color: #fff !important;
   transition: all .2s ease-in;
+}
+
+#acctdetCard{
+  width: 500px;
+}
+
+.walletcard{
+  display: flex;
+  padding: 0 10px 2px 10px;
+  background: #fff;
+  border-radius: 10px;
+  width: 220px !important;
+}
+
+.walletHeader{
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.walletHeader h1{
+  font-size: 14px;
+  font-weight: 300;
+}
+
+
+.walletHeader button{
+  border: none;
+  background: none;
+  margin-left: 30px;
+}
+
+.walletHeader button:hover{
+  display: block;
+  text-align: center;
+  background: #53277E;
+  color: #fff;
+  padding: 3px;
+  transition: .2s ease-out;
+  border-radius: 5px;
+}
+
+.walletHeader #createnewWallet h1{
+  letter-spacing: 0;
+}
+
+.walletdetails img{
+  display: flex;
+  align-items: center;
+  width: 1.8rem;
+}
+
+.walletdetails h4{
+  font-size: 0.8rem !important;
+}
+
+.walletdetails {
+  display: inline-grid;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 9px 5px 9px;
+}
+
+.walletdetails:last-child{
+  border: none;
+}
+
+.walletdetails:hover{
+  background: #ecebeb;
+  cursor: pointer;
+}
+
+.rates{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.rates small{
+  padding-bottom: 2px !important;
+  color: #53277E;
+}
+
+.rates small:hover{
+  cursor: pointer;
+  color: red;
+}
+
+.detailstext:hover {
+  cursor: pointer !important;
+  color: #a682bb !important;
 }
 
 #detailcard .card {
@@ -175,8 +305,24 @@ table #tbody tr:last-child td {
   width: 85%;
 }
 
+.sideWalletBar {
+  width: 15%;
+  padding: 2rem 1rem;
+  background: #fff;
+}
+
+
 
 /* Transfer Page */
+.transferHeading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#navigatetoModal{
+  padding-right: 30px;
+}
 .tranferContainer {
   display: flex;
   justify-content: center;
@@ -271,6 +417,26 @@ input[type="number"] {
   box-sizing: border-box;
   transition: 0.3s;
 }
+.walletinput-line input[type="text"],
+input[type="number"] {
+  width: 50%;
+  padding: 0 10px;
+  margin-left: 20px;
+  display: inline-block;
+  background-color: #fff;
+  color: #46545C;
+  border-radius: 4px;
+  border: 1px solid #46545C;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+#currencyclass{
+  width: 50% !important;
+  margin-left: 20px;
+  border: solid 1px #000;
+}
 
 .input-line input[type=text]:focus {
   border: 2px solid #53277E;
@@ -285,8 +451,12 @@ input[type="number"] {
   margin-top: 0;
   margin-bottom: 15px;
 }
+#walletinput-amount {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
 
-#acntSearchBtn {
+#acntSearchBtn, #fundWallet, #foreingTxns, #localWallet {
   margin-left: 15px;
   background-color: #53277E !important;
   border: none;
@@ -296,7 +466,7 @@ input[type="number"] {
   margin-top: 30px;
 }
 
-#payBtn {
+#payBtn, #fundBtn {
   width: 100%;
   outline: 0 !important;
   height: 42px;
@@ -308,8 +478,12 @@ input[type="number"] {
 }
 
 #payBtn:hover,
-#acntSearchBtn:hover {
+#acntSearchBtn:hover, #fundBtn:hover {
   background-color: #653780 !important;
+}
+
+#fundBtn {
+  margin-top: 15px;
 }
 
 .modal-header {
@@ -599,7 +773,7 @@ button[disabled] {
   cursor: pointer;
 } 
 
-/* date range page */
+/* all transactions date range page */
 .dateText {
   margin-right: 63px;
   display: flex;
@@ -649,4 +823,59 @@ button[disabled] {
   margin-right: 520px;
   border: none;
   /* margin-bottom: 3px; */
+}
+
+.waitingIcon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.waitingIcon img{
+  width: 200px;
+}
+
+.waitingIcon small{
+  font-size: 17px;
+  font-weight: 200;
+  color: #53277E;
+}
+.waitingIcon img{
+  width: 200px;
+}
+
+#generatestatement{
+  background: #fff;
+  color: #53277E;
+  padding: 9px;
+  border-radius: 10px;
+  border: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

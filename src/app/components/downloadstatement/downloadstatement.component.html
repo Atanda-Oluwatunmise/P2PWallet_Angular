@@ -1,0 +1,37 @@
+<mat-dialog-content>
+    <div id="modal-content-wrapper">
+        <header id="modal-header">
+            <h1 id="modal-title">Download Transaction Statement</h1>
+        </header>
+        <section id="modal-body">
+            <!-- <div class="flex-start">
+                <form #Getdate="ngForm">
+                <div id="daterange">
+                From
+                <input type="date" name="startDate" placeholder="Search">
+                To
+                <input type="date" name="endDate" placeholder="Search">  
+                </div>
+                </form>
+            </div>   -->
+            <div class="flex-start">
+                Currency: 
+                <select class="my_class" [(ngModel)]="selectedCurrency">
+                    <option value="" disabled selected>Select Currency</option>
+                    <option value="NGN">NGN</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                  </select>
+            </div>
+            <div class="flex-start generate">
+                Download
+                <button  type="submit" id="GenerateButton">Pdf</button>  
+                <button  type="submit" id="GenerateButton">Excel</button>  
+            </div>    
+          </section>
+        <footer id="modal-footer">
+            <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">Go back</button>
+        </footer>
+    </div>
+   </mat-dialog-content> 

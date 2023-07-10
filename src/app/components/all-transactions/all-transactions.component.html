@@ -1,6 +1,7 @@
+<app-header></app-header>
 <div class=" row gutterFix">
     <div class="colSide">
-        <app-header></app-header>
+        <app-sidenav></app-sidenav>
     </div>
         <div class="colMain">
         <!-- content -->
@@ -24,12 +25,28 @@
                         <div class="container-fluid py-4">
                             <div class="row">
                                 <div class="col-12">
+                                    <div class="d-inline-flex">
                                     <div class="txnRoutes d-inline-flex">
                                         <button type="submit" class="alltxnsHistory" (click)="allTransactions()">All</button>
                                         <button type="submit" class="crediTxns" (click)="creditTransactions()">Credit</button>
                                         <button type="submit" class="debitTxns" (click)="debitTransactions()">Debit</button>
-                                        <button type="submit" id="downloadTxns" (click)="downloadHistory()">Download Transactions</button>
+                                        <div class="dropdown">
+                                        <button type="submit" id="downloadTxns">Download Transactions</button>
+                                        <div class="dropdown-content">
+                                            <a>                                      
+                                                  <button type="submit" value="Credit" class="crediTxns" id="creditHistory" (click)="openDownloadModal()">Credit Transactions</button>
+                                                </a>
+                                            <a>
+                                                <button type="submit" value="Debit" class="debitTxns" id="debitHistory" (click)="generatedebithistory()">Debit Transactions</button>
+                                            </a>
+                                            <a>
+                                                <button type="submit" value="All" class="alltxnsHistory" id="allHistory" (click)="generateallhistory()">All Transactions</button>
+                                            </a>
+                                        </div>
+                                        </div>
                                     </div>
+                                        <button (click)="openModal()" class="text-sm-end d-inline-flex" type="submit" id="generatestatement">Generate Statement</button>
+                                   </div>
                                     <hr>
                                     <!-- <div class="dateText flex-end"><small>Search transactions by date</small></div> -->
                                     <form #SearchTxns="ngForm">
@@ -50,8 +67,12 @@
                                     </div>
                                     </form>
                                 
-                                    <div class="card my-4">
+                                    <div class="waitingIcon" id="waitingforSearch">
+                                        <img src="/assets/undraw_searching_re_3ra9.svg" alt="icon">
+                                        <small>Waiting to search!</small>
+                                    </div>
 
+                                    <div class="card my-4" id="transactionscard" style="display: none;">
                                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                                                 <!-- <h6 class="text-white text-uppercase px-2">Transactions</h6> -->
@@ -120,3 +141,4 @@
     </div>
     <router-outlet></router-outlet>
 </div>
+

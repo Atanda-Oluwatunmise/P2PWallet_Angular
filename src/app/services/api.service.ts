@@ -25,18 +25,33 @@ export class ApiService {
   verifyImageStatus(){
     return this.http.get<any>(`${this.userbaseUrl}verifyimagestatus`);
   }
+
   displayImage(){
     return this.http.get<any>(`${this.userbaseUrl}displayimage`);
   }
+
   getuserDetails(){
     return this.http.get<any>(`${this.userbaseUrl}accountdetails`);
   }
+
   getuserAccountDetails(acctobj: any){
     return this.http.post(`${this.userbaseUrl}userdetails`, acctobj);
   }
 
   editInfo(infoobj: any){
     return this.http.put(`${this.userbaseUrl}editinfo`, infoobj);
+  }
+
+  verifyCurrency(currency: any){
+    return this.http.post(`${this.userbaseUrl}verifycurrency`, currency);
+  }
+
+  createNewWallet(currency: any){
+    return this.http.post(`${this.userbaseUrl}createnewwallet`, currency);
+  }
+
+  verifyAccount(currency: any){
+    return this.http.post(`${this.userbaseUrl}verifyaccount`, currency);
   }
 
   deleteImage(){
@@ -55,13 +70,27 @@ export class ApiService {
     return this.http.post(`${this.transactionBaseUrl}usertransactionsbydate`,detailsObj);
   }
 
-  downloadTransactions(){
-    return this.http.get(`${this.transactionBaseUrl}generatepdf`, { responseType: 'blob', observe: 'response' }).pipe(
+  downloadTransactions(pdfdto: any){
+    return this.http.post(`${this.transactionBaseUrl}generatepdf`, pdfdto, { responseType: 'blob', observe: 'response' }).pipe(
       // map((result:HttpResponse<Blob>) => {
       //   console.log(result);
       //   saveAs(result, "Quotation.pdf");
       //   return result;
       )};
+  GeneratePdfTransactionsStatement(pdfdto: any){
+    return this.http.post(`${this.transactionBaseUrl}generateemailpdf`, pdfdto);
+  };
+  GenerateEXLTransactionsStatement(pdfdto: any){
+    return this.http.post(`${this.transactionBaseUrl}generateexcel`, pdfdto);
+  };
+  
+  ConvertCurrency(currencydto: any){
+    return this.http.post(`${this.transactionBaseUrl}convertcurrency`, currencydto);
+  };
+
+  FundForeignAccount(currencydto: any){
+    return this.http.post(`${this.transactionBaseUrl}fundforeignwallet`, currencydto);
+  };
   
 
   createUserPin(pinObj: any){

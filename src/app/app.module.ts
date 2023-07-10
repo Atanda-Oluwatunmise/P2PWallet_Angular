@@ -29,6 +29,13 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { EditInfoComponent } from './components/edit-info/edit-info.component';
 import { AllTransactionsComponent } from './components/all-transactions/all-transactions.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { TransactionstatementComponent } from './components/transactionstatement/transactionstatement.component';
+import { GeneratestatementComponent } from './components/generatestatement/generatestatement.component';
+import { CreatewalletComponent } from './components/createwallet/createwallet.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { DownloadstatementComponent } from './components/downloadstatement/downloadstatement.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch:'full'},
@@ -56,6 +63,11 @@ const appRoutes: Routes = [
     EditInfoComponent,
     AllTransactionsComponent,
     SpinnerComponent,
+    TransactionstatementComponent,
+    GeneratestatementComponent,
+    CreatewalletComponent,
+    SidenavComponent,
+    DownloadstatementComponent
   ],
   imports: [
     BrowserModule,
@@ -71,13 +83,19 @@ const appRoutes: Routes = [
     NoopAnimationsModule,
     CommonModule,
     ToastrModule.forRoot(),
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
   ],
   // exports: [
   //   MatDialogModule
   // ],
   providers: [
     DatePipe,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingInterceptor,
+    multi: true
+  },
     {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

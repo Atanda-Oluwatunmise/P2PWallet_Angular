@@ -14,5 +14,4 @@ export class SearchPipe implements PipeTransform {
       return JSON.stringify(item).toLocaleLowerCase().match(args);
     })
   }
-
 }
