@@ -37,6 +37,9 @@ export class ApiService {
   getuserAccountDetails(acctobj: any){
     return this.http.post(`${this.userbaseUrl}userdetails`, acctobj);
   }
+  getuserForeignAccountDetails(acctobj: any){
+    return this.http.post(`${this.userbaseUrl}foreignuserdetails`, acctobj);
+  }
 
   editInfo(infoobj: any){
     return this.http.put(`${this.userbaseUrl}editinfo`, infoobj);
@@ -90,6 +93,10 @@ export class ApiService {
 
   FundForeignAccount(currencydto: any){
     return this.http.post(`${this.transactionBaseUrl}fundforeignwallet`, currencydto);
+  };
+
+  ForeignAccountTransfers(transferdto: any){
+    return this.http.post(`${this.transactionBaseUrl}foreignwallettransfers`, transferdto);
   };
   
 
