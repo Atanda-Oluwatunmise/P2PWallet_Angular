@@ -42,17 +42,17 @@ export class LoginComponent {
   onLogin() {
     if(this.loginForm.valid){
       //send object to the database
-      this.loader.setLoading(true);
+      //this.loader.setLoading(true);
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res) =>{
           // console.log(res)
-          // alert(res.statusMessage)
+           //alert(res.statusMessage)
           this.loginForm.reset()
           this.auth.storeToken(res.data.token)
           this.auth.storeRefreshToken(res.data.refreshToken)
           // this.toastr.success('Successful', 'User logged in successfully')
-          this.loader.getLoading();
+          //this.loader.getLoading();
           this.router.navigate(['dashboard']);  
         },
         error: (err)=> {

@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +8,12 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalPopupComponent } from '../modal-popup/modal-popup.component';
 import { CreatewalletComponent } from '../createwallet/createwallet.component';
+import { NewtransferComponent } from '../newtransfer/newtransfer.component';
+import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
+import * as signalR from '@microsoft/signalr';
+import { SignalrService } from 'src/app/services/signal-r.service';
+import { HeaderComponent } from '../header/header.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -30,18 +36,29 @@ public currencyObj: any = {
   currency: ""
 };
 public usdId: any;
+public regex: any = "/^[A-Z]+$/";
+public hubConnection!: signalR.HubConnection;
+public obj: any;
  
- constructor(private api: ApiService, private auth: AuthService, private toastr: ToastrService, public datepipe: DatePipe, private router: Router, private matdialog: MatDialog){
+ constructor(private signalr: SignalrService, private api: ApiService, private auth: AuthService, private toastr: ToastrService, public datepipe: DatePipe, private router: Router, private matdialog: MatDialog){
  }
 
   ngOnInit(){
+    this.api.getuserDetails()
+    .subscribe((res:any)=> {
+      console.log(res);
+      this.users = res.data;
+      console.log(this.users[0].username);
+    })
     this.postList();
-  }
 
+   
+    
+  }
 
   postList(): void{
     this.api.validateuserPin()
-    .subscribe((res)=>{
+    .subscribe((res:any)=>{
       console.log(res);
         if(res.status != true){
           console.log("user has created pin")
@@ -70,16 +87,10 @@ public usdId: any;
       }
     })    
 
-    this.api.getuserDetails()
-    .subscribe(res=> {
-      console.log(res)
-
-      this.users = res.data;
-    })
 
     // this.api.getTransactionHistory()
     this.api.getRecentTransactions()
-    .subscribe(res =>{
+    .subscribe((res:any) =>{
       console.log(res.data)
       this.tabledata = res.data
       this.dateofTransaction = new Date();
@@ -109,6 +120,7 @@ public usdId: any;
            this.usdId.style.display = "";
         }
       })
+
   }
 
   onTableDataChange(event: any){
@@ -185,6 +197,23 @@ ViewGbpDetail(){
     }
   })
 }
+
+GetDetails(data:any){
+  console.log(data);
+}
+
+openNewTransactionModal(data:any){
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.id = "generatestatement";
+  dialogConfig.height = "480px";
+  dialogConfig.width = "690px";
+  dialogConfig.data = data;
+
+  const newmodalDialog = this.matdialog.open(NewtransferComponent, dialogConfig);
+
+}
+
 
  logout(){
   this.auth.logout();

@@ -1,9 +1,21 @@
-    <!-- <div class="container-fluid"> -->
-        <div class="navContainer">
-            <img class="headerImg" src="assets/bankifyimg.png">
-            <div class="usersName" class="sideHeader">
-            <span class="material-symbols-outlined rzi notification">notifications</span>
-            <img src="/assets/user.png" class="profilePicture" alt="Avatar"/>
-            <div class="usersName">Welcome <span></span></div>
+<!-- <div class="container-fluid"> -->
+<div class="navContainer">
+    <img class="headerImg" src="assets/bankifyimg.png">
+    <div class="usersName" class="sideHeader">
+
+        <div class="dropdown">
+            <button type="button" class="icon-button" id="dropdown-icon-button"> 
+                <span (click)="showdropDOwn()" class="material-icons">notifications</span>
+                <span class="icon-button__badge">{{notificationCount}}</span>
+            </button>
+
+            <div id="myDropdown" class="dropdown-content">
+                <a>Blog</a>
+                <a>Academy</a>
+                <a>YouTube</a>
             </div>
         </div>
+        <img src="/assets/user.png" class="profilePicture" alt="Avatar" />
+        <div class="usersName">Welcome,<span>{{users[0].username}}</span></div>
+    </div>
+</div>

@@ -18,6 +18,9 @@
     }
     
     #modal-title {
+        display: flex;
+        justify-content: center;
+        margin: auto;
         font-size: 22px;
         color: #53277E;
     }
@@ -37,36 +40,25 @@
         background-color: red;
         color: #fff;
         border: none;
-        padding: 10px;
+        padding: 6px;
         margin-bottom: 0;
     }
     
-    #daterange input {
-        margin-right: 10px;
+    form input{
+        width: 100%;
+        margin-bottom: 11px;
     }
     
-    .form-check-input[type=radio] {
-        border-radius: 20% !important;
-    }
-
-    .form-check-input:checked {
-        background-color: #53277E !important;
-        border-color: #53277E !important;
-    }
-
-    #GenerateButton {
+    
+    #SendButton {
+        width: 100%;
         background: #53277E;
         color: #fff;
         padding: 8px;
-        margin-left: 10px;
-        border-radius: 8px;
+        margin-bottom: 10px;
         border: none;
     }
-    
-    .generate {
-        margin-top: 30px;
-    }
-    
+
     .my_class{
         text-align-last:center;
         padding:  10px 25px;

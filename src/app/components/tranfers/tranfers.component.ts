@@ -29,6 +29,8 @@ export class TranfersComponent {
   };
   formModal: any;
   public element: any;
+  public selectElememt: any;
+  public amountElememt: any;
   public errorMessage: any;
   public btn: any;
   public selectedCurrency: any;
@@ -75,7 +77,6 @@ export class TranfersComponent {
   }
 
   displayBalance(){
-
     this.foreigncurrencyObj["currency"] = this.selectedCurrency;
     console.log(this.foreigncurrencyObj)
     this.api.verifyAccount(this.foreigncurrencyObj)
@@ -86,6 +87,7 @@ export class TranfersComponent {
     })
   }
 
+  
   onCompleteTransaction(details: { accountSearch: string, amount: any }) {
     this.pinObect["userPin"] = this.pin
     this.btn = document.getElementById('submitButton') as HTMLButtonElement | null;
@@ -350,7 +352,7 @@ export class TranfersComponent {
         if (res.status == true) {
           //display the detail and amount box
           this.element = document.getElementById('showForeignDetail');
-          this.element.style.display = 'block';
+          this.element.style.display = '';
         } else {
           //display the error message
           this.errMsgHolder = res.statusMessage;
@@ -393,6 +395,21 @@ export class TranfersComponent {
 
     this.btn = document.getElementById('foreignacntSearchBtn') as HTMLButtonElement | null;
     this.btn?.removeAttribute('disabled');
+
+    this.selectElememt = document.getElementById('currencyclass') as any;
+    this.selectElememt.value = null;
+    console.log(this.selectElememt.value);
+
+    this.foreigncurrencyObj["currency"] = "NGN";
+    this.api.verifyAccount(this.foreigncurrencyObj)
+    .subscribe((res:any) => {
+      if(res.status == true){
+         this.users = res.data;
+      }
+    })
+
+    this.amountElememt = document.getElementById('foreignamount');
+    this.amountElememt.value = '';
   }
 
   showBtn() {

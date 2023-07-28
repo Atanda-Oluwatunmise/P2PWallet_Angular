@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
+  public baseUrl:string = "http://localhost:5127/api/";
   private userbaseUrl:string = "http://localhost:5127/api/User/";
   private transactionBaseUrl:string = "http://localhost:5127/api/Transactions/";
   private authenticationUrl:string = "http://localhost:5127/api/Authentication/";

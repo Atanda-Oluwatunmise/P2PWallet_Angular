@@ -36,6 +36,7 @@ import { CreatewalletComponent } from './components/createwallet/createwallet.co
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { DownloadstatementComponent } from './components/downloadstatement/downloadstatement.component';
+import { NewtransferComponent } from './components/newtransfer/newtransfer.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch:'full'},
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     GeneratestatementComponent,
     CreatewalletComponent,
     SidenavComponent,
-    DownloadstatementComponent
+    DownloadstatementComponent,
+    NewtransferComponent
   ],
   imports: [
     BrowserModule,

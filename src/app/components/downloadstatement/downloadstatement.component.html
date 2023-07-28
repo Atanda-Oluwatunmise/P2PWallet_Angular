@@ -14,6 +14,18 @@
                 </div>
                 </form>
             </div>   -->
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="All">
+                <label class="form-check-label" for="inlineRadio1">All</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Credit">
+                <label class="form-check-label" for="inlineRadio2">Credit</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Debit">
+                <label class="form-check-label" for="inlineRadio3">Debit</label>
+              </div>
             <div class="flex-start">
                 Currency: 
                 <select class="my_class" [(ngModel)]="selectedCurrency">
@@ -26,7 +38,7 @@
             </div>
             <div class="flex-start generate">
                 Download
-                <button  type="submit" id="GenerateButton">Pdf</button>  
+                <button (click)="DownloadPdf()" type="submit" id="GenerateButton">Pdf</button>  
                 <button  type="submit" id="GenerateButton">Excel</button>  
             </div>    
           </section>
@@ -35,3 +47,4 @@
         </footer>
     </div>
    </mat-dialog-content> 
+   <app-spinner></app-spinner>

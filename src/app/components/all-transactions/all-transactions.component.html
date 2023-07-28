@@ -31,8 +31,8 @@
                                         <button type="submit" class="crediTxns" (click)="creditTransactions()">Credit</button>
                                         <button type="submit" class="debitTxns" (click)="debitTransactions()">Debit</button>
                                         <div class="dropdown">
-                                        <button type="submit" id="downloadTxns">Download Transactions</button>
-                                        <div class="dropdown-content">
+                                        <button (click)="openDownloadModal()" type="submit" id="downloadTxns">Download Transactions</button>
+                                        <!-- <div class="dropdown-content">
                                             <a>                                      
                                                   <button type="submit" value="Credit" class="crediTxns" id="creditHistory" (click)="openDownloadModal()">Credit Transactions</button>
                                                 </a>
@@ -42,7 +42,7 @@
                                             <a>
                                                 <button type="submit" value="All" class="alltxnsHistory" id="allHistory" (click)="generateallhistory()">All Transactions</button>
                                             </a>
-                                        </div>
+                                        </div> -->
                                         </div>
                                     </div>
                                         <button (click)="openModal()" class="text-sm-end d-inline-flex" type="submit" id="generatestatement">Generate Statement</button>
@@ -109,7 +109,7 @@
                                                             currentPage: page,
                                                             totalItems: count}; let i = index" id="sender"> 
                                                            <td>{{data.senderInfo}}</td>
-                                                            <td>{{data.txnAmount}}</td>
+                                                            <td>{{data.txnAmount}} {{data.currency}}</td>
                                                             <td class="txnType"><p [ngClass]="data.transType == 'CREDIT' ? 'badge bg-success': 'badge bg-danger'">{{data.transType}}</p></td>
                                                             <td>{{data.receiverInfo}}</td>
                                                             <td>{{data.dateofTransaction | date:'short'}}</td>
@@ -129,6 +129,7 @@
                                                         (pageChange)="onTableDataChange($event)">
                                                     </pagination-controls>
                                                 </div>
+                                                <app-spinner></app-spinner>
                                             <!-- </div>
                                         </div>
                                     </div> -->

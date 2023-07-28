@@ -49,7 +49,8 @@ export class AllTransactionsComponent {
   public card: any;
   public allval = (<HTMLInputElement>document.getElementById("creditHistory")) as HTMLInputElement | null;
   public all = this.allval?.value;
-  // public creditval = (<HTMLInputElement>document.getElementById("creditHistory")).value;
+  public creditval = (<HTMLInputElement>document.getElementById("creditHistory"))as HTMLInputElement | null;
+  public credit = this.creditval?.value;
   // public debitval = (<HTMLInputElement>document.getElementById("debitHistory")).value;
 
   
@@ -222,17 +223,17 @@ export class AllTransactionsComponent {
     dialogConfig.height = "350px";
     dialogConfig.width = "600px";
     dialogConfig.data= {
-      transactiondata: {
-        "fromDate": this.startDate,
-        "toDate": this.endDate,
-        "creditType": this.all,
-        // "deditType": this.debitval,
+        fromDate : this.startDate,
+        toDate: this.endDate,
+        //creditType: this.creditValue,
+        //"deditType": this.debitval,
         // "allType": this.allval
-      }
   };
 
     const modalDialog = this.matdialog.open(DownloadstatementComponent, dialogConfig);
-    
+    modalDialog.afterClosed().subscribe(
+      data => console.log("Dialog output:", data)
+  ); 
   }
 
 }

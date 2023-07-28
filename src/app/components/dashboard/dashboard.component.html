@@ -156,12 +156,12 @@
                                                         </tr> -->
                                                 </thead>
                                                 <tbody id="table-body">
-                                                    <tr *ngFor="let data of tabledata let i = index" id="sender">
+                                                    <tr *ngFor="let data of tabledata let i = index" id="sender" ng-click="getData($event)">
                                                         <!-- <tr *ngFor="let data of tabledata | orderBy: key: reverse | search: searchText | paginate: {itemsPerPage: tableSize, 
                                                             currentPage: page,
                                                             totalItems: count}; let i = index" id="sender"> -->
                                                         <td>{{data.senderInfo}}</td>
-                                                        <td>{{data.currency}} {{data.txnAmount}}</td>
+                                                        <td>{{data.txnAmount}} {{data.currency}}</td>
                                                         <td>
                                                             <p
                                                                 [ngClass]="data.transType == 'CREDIT' ? 'badge bg-success': 'badge bg-danger'">
@@ -169,6 +169,8 @@
                                                         </td>
                                                         <td>{{data.receiverInfo}}</td>
                                                         <td>{{data.dateofTransaction | date:'short'}}</td>
+                                                        <td [ngClass]="(data.senderInfo === data.senderInfo.toUpperCase() || data.receiverInfo === data.receiverInfo.toUpperCase() || data.transType == 'CREDIT' )== true? 'd-none': 'd-block'"
+                                                        id="repeatTxnBtn"><input type="button" value="Repeat Transaction" (click)="openNewTransactionModal(data)"/></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -202,3 +204,4 @@
 
     <router-outlet></router-outlet>
 </div>
+<app-spinner></app-spinner>

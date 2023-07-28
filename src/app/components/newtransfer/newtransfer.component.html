@@ -1,0 +1,32 @@
+<mat-dialog-content>
+    <div id="modal-content-wrapper">
+        <header id="modal-header">
+            <h1 id="modal-title">Send Money</h1>
+        </header>
+        <section id="modal-body">
+            <div class="formbody">
+                <form>
+                <label>Receipient's name</label>
+                <input type="text" id="username" name="username" value="{{Deatails.username}}" disabled>
+                <label>Receipient account number</label>
+                <input type="text" id="accountnumber" name="accountnumber" value="{{Deatails.accountnumber}}" disabled> 
+                <div class="row">
+                <div class="input-group mb-2 col">
+                <label>Currency</label>
+                <input type="text" id="currency" name="currency" value="{{rowdata.currency}}" disabled>  
+                </div>
+                <div class="input-group mb-2 col">
+                <label>Amount</label>
+                <input type="number" name="amount" [(ngModel)]="amount"> 
+                </div>
+                </div> 
+                </form>
+            </div> 
+                <button (click)="transferMoney()" class="flex-start sendBtn" type="submit" id="SendButton">Transfer</button>  
+          </section>
+        <footer id="modal-footer">          
+            <button (click)="closeModal()" mat-raised-button id="modal-cancel-button">Go back</button>
+        </footer>
+    </div>
+   </mat-dialog-content> 
+   <app-spinner></app-spinner>
