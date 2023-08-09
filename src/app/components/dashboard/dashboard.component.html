@@ -7,36 +7,15 @@
     <!-- colMain -->
     <div class="colMain">
         <!-- content -->
-        <!-- <button (click)="simpleAlert()">Notification</button> -->
         <div class="col p-3 py-4">
-
             <div class="container-fluid">
-                <!-- <div class="mb-npx">
-                        <div class="row align-items-center">
-                            <div *ngFor="let user of users" class="col-sm-6 col-12 mb-4 mb-sm-0">
-                                <h3 class="h2 mb-0 ls-tight">Welcome, <span>{{user.username}}</span></h3>
-                            </div>
-                            <div class="col-sm-6 col-12 text-sm-end">
-
-                                <div class="mx-n1">
-                                    <div *ngFor="let user of users" class="wrap">
-
-                                        <span>{{user.firstName}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 <!-- sideebar -->
                 <div class="row mt-2" id="detailcard">
-                    <!-- <div id="acctdetCard"> -->
                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-4">
 
                         <div *ngFor="let user of users" class="card" id="useraccountNo">
                             <div class="card-title">Account Number</div>
                             <div class="card-icon"><span class="material-symbols-sharp rzi">savings</span></div>
-                            <!-- <div class="card-title">{{user.accountNumber}}</div>
-                                <div class="card-data">{{user.accountNumber}}</div> -->
                             <div class="card-data">{{user.accountNumber}}</div>
                         </div>
                     </div>
@@ -75,17 +54,7 @@
                             </div>
                             <div class="rates">
                                 <small>Exchange rates</small>
-                            </div> 
-                        </div>
-
-                        <!-- <div *ngFor="let user of users" class="card" id="useraccountNo">
-                                <div class="card-title">Account Balance</div>
-                                <div class="card-icon"><span
-                                        class="material-symbols-outlined rzi">account_balance_wallet</span></div>
-                                <div class="card-data"><span>&#x20A6;</span>{{user.balance.toLocaleString()}}</div>
-                            </div> -->
-                        <div>
-
+                            </div>
                         </div>
                     </div>
 
@@ -93,23 +62,7 @@
                     <div class="container-fluid py-4">
                         <div class="row">
                             <div class="col-12">
-                                <!-- <div class="search text-sm-end flex-end">
-                                        <input type="text" class="searchTerm" name="search" placeholder="Search"
-                                            [(ngModel)]="searchText">
-                                        <button type="submit" class="searchButton">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                        <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
-                                            <span class=" pe-2">
-                                                <i class="bi bi-pencil"></i>
-                                            </span>
-                                        </a>
-                                    </div> -->
-                                <div>
-
-                                </div>
                                 <div class="card my-4">
-
                                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                                             <h6 class="text-white text-uppercase px-2">Recent Transactions</h6>
@@ -137,26 +90,11 @@
                                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                             Date&nbsp;</th>
                                                     </tr>
-                                                    <!-- <tr>
-                                                            <th (click)="sort('id')"
-                                                                class="text-center  text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                                Sender&nbsp;<i class="fa fa-sort"></i></th>
-                                                            <th (click)="sort('amount')"
-                                                                class="text-center  text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                                Amount&nbsp;<i class="fa fa-sort"></i></th>
-                                                            <th (click)="sort('transType')"
-                                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                                Transaction Type&nbsp;<i class="fa fa-sort"></i></th>
-                                                            <th (click)="sort('receiver')"
-                                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                                Receiver&nbsp;<i class="fa fa-sort"></i></th>
-                                                            <th (click)="sort('date')"
-                                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                                Date&nbsp;<i class="fa fa-sort"></i></th>
-                                                        </tr> -->
+
                                                 </thead>
                                                 <tbody id="table-body">
-                                                    <tr *ngFor="let data of tabledata let i = index" id="sender" ng-click="getData($event)">
+                                                    <tr *ngFor="let data of tabledata let i = index" id="sender"
+                                                        ng-click="getData($event)">
                                                         <!-- <tr *ngFor="let data of tabledata | orderBy: key: reverse | search: searchText | paginate: {itemsPerPage: tableSize, 
                                                             currentPage: page,
                                                             totalItems: count}; let i = index" id="sender"> -->
@@ -170,27 +108,15 @@
                                                         <td>{{data.receiverInfo}}</td>
                                                         <td>{{data.dateofTransaction | date:'short'}}</td>
                                                         <td [ngClass]="(data.senderInfo === data.senderInfo.toUpperCase() || data.receiverInfo === data.receiverInfo.toUpperCase() || data.transType == 'CREDIT' )== true? 'd-none': 'd-block'"
-                                                        id="repeatTxnBtn"><input type="button" value="Repeat Transaction" (click)="openNewTransactionModal(data)"/></td>
+                                                            id="repeatTxnBtn"><input type="button"
+                                                                value="Repeat Transaction"
+                                                                (click)="openNewTransactionModal(data)" /></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                             <div class="text-sm-end flex-end" id="allTxns">
                                                 <a (click)="goToTransactionsPage()">View all Transactions</a>
                                             </div>
-
-
-                                            <!-- <div>
-                                                    <div>
-                                                        <select (change)="onTableSizeChange($event)">
-                                                            <option *ngFor="let size of tableSizes">
-                                                                {{size}}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <pagination-controls previousLabel="Prev" nextLabel="Next"
-                                                        (pageChange)="onTableDataChange($event)">
-                                                    </pagination-controls>
-                                                </div> -->
                                         </div>
                                     </div>
                                 </div>

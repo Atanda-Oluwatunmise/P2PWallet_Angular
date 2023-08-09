@@ -47,7 +47,7 @@ export class LoginComponent {
       .subscribe({
         next:(res) =>{
           // console.log(res)
-           //alert(res.statusMessage)
+          alert(res.statusMessage)
           this.loginForm.reset()
           this.auth.storeToken(res.data.token)
           this.auth.storeRefreshToken(res.data.refreshToken)

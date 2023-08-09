@@ -1,0 +1,97 @@
+/* generatestatement modal */
+/* #generatestatement {
+    border: 3px solid #262626;
+    border-radius: 11px;
+    background-color: #fff;
+    /* background: #fff !important; */
+
+#modal-content-wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    color: black;
+    grid-template-rows: repeat(1fr, 3);
+}
+
+#modal-body {
+    margin-top: 15px;
+}
+
+#modal-title {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    font-size: 22px;
+    color: #53277E;
+}
+
+#modal-footer {
+    /* margin-top: 80px; */
+    justify-self: right;
+    align-self: center;
+}
+
+#modal-action-button {
+    margin-right: 30px;
+    background-color: #3b3b3b;
+}
+
+#modal-cancel-button {
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 6px;
+    margin-bottom: 0;
+}
+
+form input {
+    width: 100%;
+    margin-bottom: 11px;
+}
+
+
+#SendButton {
+    width: 100%;
+    background: #53277E;
+    color: #fff;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.my_class {
+    text-align-last: center;
+    padding: 10px 25px;
+    width: 200px;
+    color: #333;
+    border: 1px solid #bababa;
+    border-radius: 5;
+    background-color: white;
+    /* background-image:
+          linear-gradient(45deg, transparent 50%, #53277E 50%),
+          linear-gradient(135deg, #53277E 50%, transparent 50%); */
+    background-repeat: no-repeat;
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+
+    margin-top: 20px;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.rzi {
+    font-family: "Material Icons Outlined";
+    color: red;
+}
+
+.rzi:hover {
+    cursor: pointer;
+}

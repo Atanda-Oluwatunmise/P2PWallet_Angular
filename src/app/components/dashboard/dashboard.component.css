@@ -73,18 +73,20 @@ body {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  padding: 7px 2px !important;
   text-decoration: none;
   display: block;
+  font-size: 14px;
 }
 
 .dropdown-content a:hover {
   background-color: #f1f1f1;
+  cursor: pointer;
 }
 
 .show {display:block;}
@@ -137,11 +139,11 @@ body {
   content: "▾";
   color: #53277E !important;
 }
-.nav-link[data-bs-toggle]:not(.collapsed)::after {
+/* .nav-link[data-bs-toggle]:not(.collapsed)::after {
   content: "▴";
   color: #53277E !important;
 
-}
+} */
 
 #logout span {
   color: #53277E !important;

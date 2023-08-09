@@ -16,6 +16,8 @@ import { TransactionstatementComponent } from './components/transactionstatement
 import { GeneratestatementComponent } from './components/generatestatement/generatestatement.component';
 import { CreatewalletComponent } from './components/createwallet/createwallet.component';
 import { NewtransferComponent } from './components/newtransfer/newtransfer.component';
+import { NotificationcomponentComponent } from './components/notificationcomponent/notificationcomponent.component';
+import { KycverificationComponent } from './components/kycverification/kycverification.component';
 
 //configure the routing in the app module
 const routes: Routes = [
@@ -40,7 +42,9 @@ const routes: Routes = [
   { path: "transactionsstatement", component: TransactionstatementComponent, canActivate: [AuthGuard] },
   { path: "generatestatement", component: GeneratestatementComponent, canActivate: [AuthGuard] },
   { path: "createwallet", component: CreatewalletComponent, canActivate: [AuthGuard] },
-  { path: "newtransfer", component: NewtransferComponent, canActivate: [AuthGuard] }
+  { path: "newtransfer", component: NewtransferComponent, canActivate: [AuthGuard] },
+  { path: "notificationcomponent", component: NotificationcomponentComponent, canActivate: [AuthGuard] },
+  { path: "kycverification", component: KycverificationComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -62,5 +66,7 @@ export const routingComponents = [
   TransactionstatementComponent,
   GeneratestatementComponent,
   CreatewalletComponent,
-  NewtransferComponent
+  NewtransferComponent,
+  NotificationcomponentComponent,
+  KycverificationComponent
 ]

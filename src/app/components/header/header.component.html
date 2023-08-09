@@ -5,17 +5,16 @@
 
         <div class="dropdown">
             <button type="button" class="icon-button" id="dropdown-icon-button"> 
-                <span (click)="showdropDOwn()" class="material-icons">notifications</span>
+                <span class="material-icons">notifications</span>
                 <span class="icon-button__badge">{{notificationCount}}</span>
             </button>
 
             <div id="myDropdown" class="dropdown-content">
-                <a>Blog</a>
-                <a>Academy</a>
-                <a>YouTube</a>
+                <!-- <a>Academy</a>
+                <a>YouTube</a> -->
             </div>
         </div>
         <img src="/assets/user.png" class="profilePicture" alt="Avatar" />
-        <div class="usersName">Welcome,<span>{{users[0].username}}</span></div>
+        <div class="usersName">Welcome,<span>{{username}}</span></div>
     </div>
 </div>

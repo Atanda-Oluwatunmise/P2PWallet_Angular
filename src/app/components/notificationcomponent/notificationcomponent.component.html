@@ -1,0 +1,39 @@
+<mat-dialog-content>
+    <div id="modal-content-wrapper">
+        <header id="modal-header">
+            <div id="cardHeader">
+                <span (click)="closeModal()" class="material-symbols-outlined rzi">arrow_back</span>
+            </div>
+            <h1 id="modal-title">Details</h1>
+        </header>
+        <section id="modal-body">
+            <div id>
+                <span>Sender<span><h4>{{data.sender}}</h4></span></span>
+                <span>Account number<span><h4>{{data.accountNumber}}</h4></span></span>
+                <span>Amount<span><h4>{{data.currency}}{{data.amount}}</h4></span></span>
+                <span>Date<span><h4>{{data.date | date:'short'}}</h4></span></span>
+            </div>
+            <!-- <div class="formbody">
+                <form>
+                <label>Receipient's name</label>
+                <input type="text" id="username" name="username" disabled>
+                <label>Receipient account number</label>
+                <input type="text" id="accountnumber" name="accountnumber"  disabled> 
+                <div class="row">
+                <div class="input-group mb-2 col">
+                <label>Currency</label>
+                <input type="text" id="currency" name="currency" disabled>  
+                </div>
+                <div class="input-group mb-2 col">
+                <label>Amount</label>
+                <input type="number" name="amount"> 
+                </div>
+                </div> 
+                </form>
+            </div>  -->
+                <!-- <button class="flex-start sendBtn" type="submit" id="SendButton">Transfer</button>   -->
+          </section>
+   
+    </div>
+   </mat-dialog-content> 
+   <app-spinner></app-spinner>

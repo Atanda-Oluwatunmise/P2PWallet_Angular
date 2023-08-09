@@ -37,6 +37,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { DownloadstatementComponent } from './components/downloadstatement/downloadstatement.component';
 import { NewtransferComponent } from './components/newtransfer/newtransfer.component';
+import { NotificationcomponentComponent } from './components/notificationcomponent/notificationcomponent.component';
+import { KycverificationComponent } from './components/kycverification/kycverification.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch:'full'},
@@ -69,7 +71,9 @@ const appRoutes: Routes = [
     CreatewalletComponent,
     SidenavComponent,
     DownloadstatementComponent,
-    NewtransferComponent
+    NewtransferComponent,
+    NotificationcomponentComponent,
+    KycverificationComponent
   ],
   imports: [
     BrowserModule,
