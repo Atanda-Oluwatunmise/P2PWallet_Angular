@@ -73,7 +73,7 @@ body {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 120px;
+  width: 220px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 .dropdown-content a {
@@ -162,6 +162,29 @@ body {
   background-color: #53277E;
   color: #fff !important;
   transition: all .2s ease-in;
+}
+
+.chatWithus{
+  background: #fff;
+  color: #404040;
+  position: fixed;
+  display: flex;
+  font-weight: 400;
+  justify-content: space-between;
+  z-index: 98;
+  top: 60px;
+  right: 20px;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 0 1px 15px rgba(32, 33, 36, 0.28);
+  text-decoration: none;
+}
+
+.chatWithus:hover{
+  cursor: pointer;
+  /* background: #a682bb;
+  color: #fff; */
 }
 
 #acctdetCard{

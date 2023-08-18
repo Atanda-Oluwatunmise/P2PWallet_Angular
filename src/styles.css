@@ -2,14 +2,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-mat-mdc-dialog-container #generatestatement {
-    border: 3px solid #fff;
-    border-radius: 11px;
+.mat-mdc-dialog-container #generatestatement {
+    /* border: 3px solid #fff;
+    border-radius: 11px; */
     background-color: #fff;
 }
 
 .mat-mdc-dialog-container .mdc-dialog__surface {
     background-color: #fff !important;
-    height: 93% !important;
-    width: 75% !important;
+    /* height: 93% !important; */
+    /* width: 75% !important; */
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    height: 100% !important;
+    width: 100% !important;
 }

@@ -6,7 +6,15 @@
     <div class="colMain">
                 <!-- content -->
                 <main class="main-container">
-                    <div class="row main-cards pt-4">
+                    <div class="main-container pt-4" id="voidImageHolder" style="display: none;">
+                        <img src="/assets/undraw_void_-3-ggu.svg" alt="icon">
+                        <h4>KYC documents awaiting approval!!!</h4>
+                    </div>
+                    <div class="main-container pt-4" id="approvedImageHolder" style="display: none;">
+                        <img src="/assets/undraw_celebrating_rtuv.svg" alt="icon">
+                        <h4>KYC documents have been approved!!!</h4>
+                    </div>
+                    <div class="row main-cards pt-4" id="mainCardId">
                         <div class="col-md-4">
                             <div class="card-body">
                                 <img src="/assets/undraw_add_files_re_v09g.svg" alt="icon">
@@ -22,17 +30,18 @@
                                             <img src="/assets/undraw_add_files_re_v09g.svg" alt="icon">
                                         </div> -->
                                         <div class="card-body" id="formContainer">
-                                        <div class="form-group">
+                                            
+                                        <!-- <div class="form-group">
                                             <label for="">{{docOne | titlecase}}</label>
                                             <input (change)="DocOneOnChange($event)" type="file" class="form-control" id="{{docOne}}" accept="image/*,.pdf,.doc ">
                                         </div>                               
                                         <div class="form-group">
                                             <label for="">{{docTwo | titlecase}}</label>
                                             <input (change)="DocTwoOnChange($event)" type="file" class="form-control" id="{{docTwo}}" accept="image/*,.pdf,.doc ">
-                                        </div>                               
-                                        <div>
+                                        </div>                                -->
+                                        <!-- <div>
                                             <button (click)="UploadDocuments()" class="submitBtn float-right" id="buttonPrimary">Upload</button>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="container" *ngIf="loading">
                                         <h3>{{kycmessage}}</h3>

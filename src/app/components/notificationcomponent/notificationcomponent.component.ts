@@ -31,7 +31,7 @@ export class NotificationcomponentComponent {
         // this.element.querySelector('a').removeChild();
       }
     })
-  }
+}
 
   closeModal() {
     this.modalDialog.close();

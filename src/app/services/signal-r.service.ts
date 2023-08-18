@@ -21,6 +21,14 @@ export class SignalrService {
     });
   }
 
+  invokeConnection(user:string, message:string) {
+    this.hubConnection.invoke("SendMessage", user, message)
+  }
+
+  receiveMessage(callback:(user:string, message:string, sentAt:string) => void){
+    this.hubConnection.on('ReceiveMessage', callback);
+  }
+
   receiveAlert(callback:(user: string, message: string, reference:string) => void){
     this.hubConnection.on('ReceiveNotification', callback)
   }
@@ -28,7 +36,7 @@ export class SignalrService {
   lockedUserAlert(callback:(user: string, message: string) => void){
     this.hubConnection.on('UserLockedNotification', callback)
   }
-  kycAlert(callback:(user: string, message: string) => void){
+  kycAlert(callback:(user: string, message: string, reason: string) => void){
     this.hubConnection.on('UserKycNotification', callback)
   }
 }

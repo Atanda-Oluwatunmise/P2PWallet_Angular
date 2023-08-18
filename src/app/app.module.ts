@@ -17,7 +17,6 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { HeaderComponent } from './components/header/header.component';
 import { TranfersComponent } from './components/tranfers/tranfers.component';
 import { CommonModule } from '@angular/common';
-import { ToastrModule } from 'ngx-toastr';
 import { FundAccountComponent } from './components/fund-account/fund-account.component';
 import { DatePipe } from '@angular/common';
 import { ModalPopupComponent } from './components/modal-popup/modal-popup.component';
@@ -39,13 +38,16 @@ import { DownloadstatementComponent } from './components/downloadstatement/downl
 import { NewtransferComponent } from './components/newtransfer/newtransfer.component';
 import { NotificationcomponentComponent } from './components/notificationcomponent/notificationcomponent.component';
 import { KycverificationComponent } from './components/kycverification/kycverification.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ChatboxComponent } from './components/chatbox/chatbox.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch:'full'},
   //{path: '', component: DashboardComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'tranfers', component: TranfersComponent},
-  {path: 'fundaccount', component: FundAccountComponent}
+  {path: 'fundaccount', component: FundAccountComponent},
+  {path: 'chat', component: ChatboxComponent}
 ]
 
 @NgModule({ 
@@ -73,7 +75,8 @@ const appRoutes: Routes = [
     DownloadstatementComponent,
     NewtransferComponent,
     NotificationcomponentComponent,
-    KycverificationComponent
+    KycverificationComponent,
+    ChatboxComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +93,8 @@ const appRoutes: Routes = [
     CommonModule,
     ToastrModule.forRoot(),
     MatDialogModule,
-    MatSidenavModule
+    MatSidenavModule,
+    ToastrModule
   ],
   // exports: [
   //   MatDialogModule

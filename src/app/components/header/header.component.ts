@@ -7,6 +7,8 @@ import * as signalR from '@microsoft/signalr';
 import { SignalrService } from 'src/app/services/signal-r.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotificationcomponentComponent } from '../notificationcomponent/notificationcomponent.component';
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -21,8 +23,11 @@ export class HeaderComponent {
   public notificationCount: number = 0;
   public notificationData =[];
   public dataReference: any;
+  public msgBodyObj: any ={
+    message: ""
+  }
 
-  constructor(private signalr: SignalrService, private api: ApiService, private auth: AuthService, private route: ActivatedRoute, private router: Router, private matdialog: MatDialog){}
+  constructor(private toastr: ToastrService, private signalr: SignalrService, private api: ApiService, private auth: AuthService, private route: ActivatedRoute, private router: Router, private matdialog: MatDialog){}
   
   ngOnInit(){
     this.signalr.startConnection(); 
@@ -59,6 +64,39 @@ export class HeaderComponent {
        return;
    })
 
+   this.signalr.kycAlert((user, message,reason) => {
+    
+    if (this.users[0].username == user) {
+      // this.notificationCount ++;
+      // var a = document.createElement('a');
+      // a.target = '_blank';
+      // a.innerText = `${message} has been rejected`;
+      // //a.classList.add('dropdown-content a', 'dropdown-content a:hover')
+      // this.element = document.getElementById('myDropdown');
+      // this.element.appendChild(a);
+      // a.addEventListener('click', () => {
+      //  window.location.reload();
+      // })
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: false,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'info',
+        title: `${message} document has been rejected`
+      })
+    }
+    window.location.reload();
+  })
+
    this.signalr.lockedUserAlert((user, message)=>{
     if (this.users[0].username == user)
     {
@@ -82,6 +120,7 @@ export class HeaderComponent {
          this.element.appendChild(a);
          a.addEventListener('click', () => {
            // create a component
+           if(res.data[i].reference != ''){
            const dialogConfig = new MatDialogConfig();
            dialogConfig.disableClose = true;
            dialogConfig.id = "notificationcomponent";
@@ -90,6 +129,24 @@ export class HeaderComponent {
            dialogConfig.data = res.data[i].reference;
 
            const modalDialog = this.matdialog.open(NotificationcomponentComponent, dialogConfig);
+           }
+           else{
+            Swal.fire({
+              title: 'Notification',
+              text: res.data[i].notificationBody,
+              confirmButtonColor: '#53277E'
+            }).then((result)=>{
+              if(result.isConfirmed){
+                window.location.reload();
+              }
+              window.location.reload();
+            })
+            this.msgBodyObj["message"] = res.data[i].notificationBody;
+              this.api.setNotificationToTrue(this.msgBodyObj)
+              .subscribe((res)=> {
+                console.log(res);
+              }) 
+           }
        });
        }
      }

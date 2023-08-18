@@ -18,6 +18,7 @@ import { CreatewalletComponent } from './components/createwallet/createwallet.co
 import { NewtransferComponent } from './components/newtransfer/newtransfer.component';
 import { NotificationcomponentComponent } from './components/notificationcomponent/notificationcomponent.component';
 import { KycverificationComponent } from './components/kycverification/kycverification.component';
+import { ChatboxComponent } from './components/chatbox/chatbox.component';
 
 //configure the routing in the app module
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
   { path: "createwallet", component: CreatewalletComponent, canActivate: [AuthGuard] },
   { path: "newtransfer", component: NewtransferComponent, canActivate: [AuthGuard] },
   { path: "notificationcomponent", component: NotificationcomponentComponent, canActivate: [AuthGuard] },
-  { path: "kycverification", component: KycverificationComponent, canActivate: [AuthGuard] }
+  { path: "kycverification", component: KycverificationComponent, canActivate: [AuthGuard] },
+  { path: "chat", component: ChatboxComponent}
 ];
 
 @NgModule({
@@ -68,5 +70,6 @@ export const routingComponents = [
   CreatewalletComponent,
   NewtransferComponent,
   NotificationcomponentComponent,
-  KycverificationComponent
+  KycverificationComponent,
+  ChatboxComponent
 ]

@@ -153,4 +153,10 @@ export class ApiService {
     return this.http.get<any>(`${this.kycprocessbaseUrl}upgradeuseraccount`);
   }
 
+  unUploadedoRRejectedDocs(){
+    return this.http.get<any>(`${this.kycprocessbaseUrl}unuploadeddocs`);
+  }
+  setNotificationToTrue(msgObj: any){
+    return this.http.post(`${this.notificationbaseUrl}setnotificationtotrue`, msgObj);
+  }
 }

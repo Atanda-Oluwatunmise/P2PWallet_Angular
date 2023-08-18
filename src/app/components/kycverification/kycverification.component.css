@@ -52,7 +52,7 @@ table thead {
 }
 
 
-.submitBtn {
+input .submitBtn {
     background-color: #53277E;
     color: #fff;
     margin-top: 20px;
@@ -72,13 +72,37 @@ table thead {
 
 .form-group {
     padding-bottom: 10px !important;
+    display: flex !important;
+}
+
+input .btn-primary{
+    background-color: #53277E !important;
+    border-color: #9b4085 !important;
 }
 
 img {
     width: 393px;
     height: auto;
-
 }
+
+#voidImageHolder, #approvedImageHolder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px !important;
+}
+
+#voidImageHolder img, #approvedImageHolder img{
+    width: 300px;
+    height: auto;
+}
+
+#voidImageHolder h4, #approvedImageHolder h4{
+    color: red;
+    font-weight: 100;
+    font-stretch: expanded;
+}
+
 
 .imgContainer {
     display: flex;

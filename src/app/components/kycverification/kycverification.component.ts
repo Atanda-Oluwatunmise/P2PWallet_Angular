@@ -10,9 +10,9 @@ import Swal from 'sweetalert2';
 })
 export class KycverificationComponent {
   public requiredDocs: any;
-  public documents:any= [];
+  public documents: any = [];
 
-  public formdataList:any= [];
+  public formdataList: any = [];
   public docOne: any;
   public kycmessage: any;
   public users: any;
@@ -23,108 +23,117 @@ export class KycverificationComponent {
   public fileTwo: any;
   public notificationMessage: any;
   public element: any;
+  public labelid: any;
   public loading: boolean = false;
   public formData = new FormData();
+  public unuploadeDocs: any;
+  public imgElement: any;
+  public kycResponseObj: any;
 
-  constructor(private api: ApiService, private signalr: SignalrService){}
+  constructor(private api: ApiService, private signalr: SignalrService) { }
 
-  ngOnInit(){
-    this.signalr.startConnection(); 
+  ngOnInit() {
+    this.signalr.startConnection();
+
     this.api.getuserDetails()
-    .subscribe((res:any)=> {
-      console.log(res);
-      this.users = res.data;
-      this.username = this.users[0].username;
-    })
-
-    this.api.kycUpgrade().subscribe((res)=>{
-      console.log(res);
-      if(res.status == true){
-      Swal.fire({
-        title: "Info!",
-        text: `KYC Documents ${res.data}`,
-        icon: "info",
-        confirmButtonColor: '#53277E' 
+      .subscribe((res: any) => {
+        console.log(res);
+        this.users = res.data;
+        this.username = this.users[0].username;
       })
-    }
-    })
 
+    this.api.kycUpgrade().subscribe((res:any) => {
+      console.log(res);
+      this.kycResponseObj = res;
+      if (res.status == true) {
+        this.imgElement = document.getElementById("voidImageHolder");
+        this.imgElement.style.display = "none";
+        this.imgElement = document.getElementById("mainCardId");
+        this.imgElement.style.display = "none";
+        this.imgElement = document.getElementById("approvedImageHolder");
+        this.imgElement.style.display = "";
+        // Swal.fire({
+        //   title: "Info!",
+        //   text: `KYC Documents ${res.data}`,
+        //   icon: "info",
+        //   confirmButtonColor: '#53277E'
+        // })
+      }
+    })
+    this.getListsOfDocs();
+  }
+
+  getListsOfDocs() {
     this.api.getListofKycDocs()
-    .subscribe((res:any) =>{
-      this.requiredDocs = res.data;
-      for(let i=0; i< this.requiredDocs.length; i++)
-      {
-        this.docOne = this.requiredDocs[0].name;
-        console.log(this.docOne);
-        this.docTwo = this.requiredDocs[1].name;
-      }
-    })
+      .subscribe((res: any) => {
+        this.requiredDocs = res.data;
+        for (let i = 0; i < this.requiredDocs.length; i++) {
+          let label = document.createElement('label');
+          label.id = `${this.requiredDocs[i].name}-label`;
+          label.innerText = `${this.requiredDocs[i].name}`.toUpperCase();
+          let row = document.createElement('div');
+          row.classList.add('form-group', 'pb-4', 'd-flex');
+          row.id = `${this.requiredDocs[i].name}-user`;
+          row.innerHTML = `<input type="file" class="form-control d-flex" id="${this.requiredDocs[i].name}">`;
+          row.addEventListener('change', (event: any) => {
+            let element = event.target || event.srcElement || event.currentTarget;
+            this.fileOne = event.target.files[0];
+            console.log(this.fileOne);
+            var elementid = element.id;
+            if (elementid === this.requiredDocs[i].name) {
+              let fileName: string = this.requiredDocs[i].name;
+              let fileExtension: string = this.fileOne.name.split('?')[0].split('.').pop();
+              this.formData.append('uploadedImage', this.fileOne, fileName + '.' + fileExtension);
+            }
+          })
 
-    this.signalr.kycAlert((user, message)=>{
-      if (this.users[0].username == user){
-        console.log(message)
-        Swal.fire({
-          title: "Info!",
-          text: `${message} has been rejected, please re-upload!`,
-          icon: "info",
-          confirmButtonColor: '#53277E' 
-        })
-        this.notificationMessage = message.split('.');
-        this.kycmessage = this.notificationMessage[0];
-        if (this.docOne !== this.kycmessage){
-          this.element = document.getElementById(`${this.docOne}`);
-          this.element.style.display = 'none';
+          let btn = document.createElement('input');
+          btn.setAttribute('type', 'button');
+          btn.setAttribute('value', 'Upload');
+          btn.classList.add('btn-tertiary', 'd-flex');
+          btn.addEventListener('click', () => {
+            this.loading = !this.loading;
+            this.kycmessage = "Uploading ...."
+            this.api.kycFileUpload(this.formData)
+              .subscribe((res: any) => {
+                if (res.status == true) {
+                  window.location.reload();
+                  // this.element = document.getElementById(row.id);
+                  // console.log(row.id);
+                  // this.element.style.display = 'none';
+                  // this.kycmessage = "Upload Successful"
+                }
+              })
+          })
+
+          this.api.unUploadedoRRejectedDocs()
+            .subscribe((res) => {
+              console.log(res);
+              if (res.status == true) {
+                this.unuploadeDocs = res.data;
+                console.log(this.unuploadeDocs[0].name); if (`${this.unuploadeDocs[i].name}-user` != row.id) {
+                  this.labelid = document.getElementById(`${this.requiredDocs[i].name}-label`);
+                  this.labelid.style.display = 'none';
+                  //this.element= document.getElementById(row.id);
+                  row.classList.remove('d-flex');
+                  row.classList.add("d-none");
+                }
+              }
+
+              if (res.status != true && this.kycResponseObj.status != true) {
+                this.imgElement = document.getElementById("voidImageHolder");
+                this.imgElement.style.display = "";
+                this.imgElement = document.getElementById("mainCardId");
+                this.imgElement.style.display = "none";
+              }
+            })
+
+          document.getElementById("formContainer")?.appendChild(label);
+          document.getElementById("formContainer")?.appendChild(row);
+          document.getElementById(`${this.requiredDocs[i].name}-user`)?.appendChild(btn);
+
         }
-        if (this.docTwo !== this.kycmessage){
-          this.element = document.getElementById(`${this.docTwo}`);
-          this.element.style.display = 'none';
-        }
-      }
-    })
-  }
-
-  DocOneOnChange(event:any){
-    let element = event.target || event.srcElement || event.currentTarget;
-    this.fileOne = event.target.files[0];
-    console.log(this.fileOne);
-    var elementid = element.id;
-    if (elementid === this.docOne){
-      let fileName:string = this.docOne;
-      let fileExtension:string = this.fileOne.name.split('?')[0].split('.').pop();
-      console.log(fileExtension);
-      //const formData = new FormData();
-      this.formData.append('uploadedImage', this.fileOne, fileName+'.'+fileExtension);
-      //this.formdataList.push(formData);
-      console.log(this.formData);
-    }
-  }
-
-  DocTwoOnChange(event:any){
-    let element = event.target || event.srcElement || event.currentTarget;
-    this.fileTwo = event.target.files[0];
-    var elementid = element.id;
-    if (elementid === this.docTwo){
-      let fileName:string = this.docTwo;
-      let fileExtension:string = this.fileTwo.name.split('?')[0].split('.').pop();
-      console.log(fileExtension);
-      //const formData = new FormData();
-      this.formData.append('uploadedImage', this.fileTwo, fileName+'.'+fileExtension);
-      //this.formdataList.push(formData);
-
-    }
-  }
-
-  UploadDocuments(){
-    this.loading = !this.loading;
-    this.kycmessage = "Uploading ...."
-    this.api.kycFileUpload(this.formData)
-    .subscribe((res:any) => {
-      if(res.status == true){
-        this.element = document.getElementById("formContainer");
-        this.element.style.display = 'none';
-        this.kycmessage = "Upload Successful, Approval Pending!"    
-      }
-    })
+      })
   }
 
 }

@@ -208,7 +208,7 @@ export class AllTransactionsComponent {
   openModal(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.id = "generatestatement";
+    // dialogConfig.id = "generatestatement";
     dialogConfig.height = "350px";
     dialogConfig.width = "600px";
 

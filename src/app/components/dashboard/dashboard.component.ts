@@ -13,6 +13,7 @@ import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signal
 import * as signalR from '@microsoft/signalr';
 import { SignalrService } from 'src/app/services/signal-r.service';
 import { HeaderComponent } from '../header/header.component';
+import { ChatboxComponent } from '../chatbox/chatbox.component';
 
 
 @Component({
@@ -205,8 +206,8 @@ GetDetails(data:any){
 openNewTransactionModal(data:any){
   const dialogConfig = new MatDialogConfig();
   dialogConfig.disableClose = true;
-  dialogConfig.id = "generatestatement";
-  dialogConfig.height = "480px";
+  dialogConfig.id = "newtransfer";
+  dialogConfig.height = "430px";
   dialogConfig.width = "690px";
   dialogConfig.data = data;
 
@@ -214,6 +215,15 @@ openNewTransactionModal(data:any){
 
 }
 
+openChatBox(){
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.id = "chat";
+  dialogConfig. height = "465px";
+  dialogConfig.width = "1000px";
+  
+  const chatmodalDialog = this.matdialog.open(ChatboxComponent, dialogConfig);
+}
 
  logout(){
   this.auth.logout();
