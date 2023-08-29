@@ -40,6 +40,9 @@ import { NotificationcomponentComponent } from './components/notificationcompone
 import { KycverificationComponent } from './components/kycverification/kycverification.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ChatboxComponent } from './components/chatbox/chatbox.component';
+import { UserchatsComponent } from './components/userchats/userchats.component';
+import { ContactAdminComponent } from './components/contact-admin/contact-admin.component';
+import { OutsidechatboxComponent } from './components/outsidechatbox/outsidechatbox.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch:'full'},
@@ -76,7 +79,10 @@ const appRoutes: Routes = [
     NewtransferComponent,
     NotificationcomponentComponent,
     KycverificationComponent,
-    ChatboxComponent
+    ChatboxComponent,
+    UserchatsComponent,
+    ContactAdminComponent,
+    OutsidechatboxComponent
   ],
   imports: [
     BrowserModule,

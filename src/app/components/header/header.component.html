@@ -2,13 +2,18 @@
 <div class="navContainer">
     <img class="headerImg" src="assets/bankifyimg.png">
     <div class="usersName" class="sideHeader">
+        <div class="dropdown">
+            <button (click)="openChatBox()" type="button" class="icon-button" id="dropdown-icon-button"> 
+                <span class="material-icons">message</span>
+                <span class="icon-button__badge"></span>
+            </button>
+        </div>
 
         <div class="dropdown">
             <button type="button" class="icon-button" id="dropdown-icon-button"> 
                 <span class="material-icons">notifications</span>
                 <span class="icon-button__badge">{{notificationCount}}</span>
             </button>
-
             <div id="myDropdown" class="dropdown-content">
                 <!-- <a>Academy</a>
                 <a>YouTube</a> -->

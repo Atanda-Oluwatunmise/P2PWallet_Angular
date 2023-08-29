@@ -16,10 +16,34 @@ export class ApiService {
   private transactionBaseUrl: string = "http://localhost:5127/api/Transactions/";
   private authenticationUrl: string = "http://localhost:5127/api/Authentication/";
   private paymentUrl: string = "http://localhost:5127/api/Payment/";
+  private chaturl: string = "http://localhost:5127/api/Chat/";
   // private postBody: string ="";
 
   //inject the httpclient
   constructor(private http: HttpClient, private router: Router) { }
+
+  StartedChats(messageObj: any) {
+    return this.http.post(`${this.chaturl}listofstartedchats`, messageObj);
+  }
+  StartChatting(messageObj: any) {
+    return this.http.post(`${this.chaturl}startchatting`, messageObj);
+  }
+  FindUser(messageObj: any) {
+    return this.http.post(`${this.chaturl}finduser`, messageObj);
+  }
+  SendMessage(messageObj: any) {
+    return this.http.post(`${this.chaturl}postusermessage`, messageObj);
+  }
+
+  LoadMessages(messageObj: any){
+    return this.http.post(`${this.chaturl}getusermessages`, messageObj);
+  }
+  VerifyEmail(messageObj: any){
+    return this.http.post(`${this.chaturl}verifyuseremail`, messageObj);
+  }
+  VerifyOtp(messageObj: any){
+    return this.http.post(`${this.chaturl}verifyuserotp`, messageObj);
+  }
 
   uploadImage(imgobj: any) {
     return this.http.post(`${this.userbaseUrl}uploadimage`, imgobj);

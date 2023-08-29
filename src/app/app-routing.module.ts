@@ -19,6 +19,9 @@ import { NewtransferComponent } from './components/newtransfer/newtransfer.compo
 import { NotificationcomponentComponent } from './components/notificationcomponent/notificationcomponent.component';
 import { KycverificationComponent } from './components/kycverification/kycverification.component';
 import { ChatboxComponent } from './components/chatbox/chatbox.component';
+import { UserchatsComponent } from './components/userchats/userchats.component';
+import { ContactAdminComponent } from './components/contact-admin/contact-admin.component';
+import { OutsidechatboxComponent } from './components/outsidechatbox/outsidechatbox.component';
 
 //configure the routing in the app module
 const routes: Routes = [
@@ -46,7 +49,10 @@ const routes: Routes = [
   { path: "newtransfer", component: NewtransferComponent, canActivate: [AuthGuard] },
   { path: "notificationcomponent", component: NotificationcomponentComponent, canActivate: [AuthGuard] },
   { path: "kycverification", component: KycverificationComponent, canActivate: [AuthGuard] },
-  { path: "chat", component: ChatboxComponent}
+  { path: "chat", component: ChatboxComponent},
+  { path: "userchats", component: UserchatsComponent, canActivate:[AuthGuard]},
+  { path: "contactadmin", component: ContactAdminComponent},
+  { path: "outsidechatbox", component: OutsidechatboxComponent},
 ];
 
 @NgModule({
@@ -71,5 +77,8 @@ export const routingComponents = [
   NewtransferComponent,
   NotificationcomponentComponent,
   KycverificationComponent,
-  ChatboxComponent
+  ChatboxComponent,
+  UserchatsComponent,
+  ContactAdminComponent,
+  OutsidechatboxComponent
 ]

@@ -26,7 +26,7 @@ export class SignalrService {
   }
 
   receiveMessage(callback:(user:string, message:string, sentAt:string) => void){
-    this.hubConnection.on('ReceiveMessage', callback);
+    this.hubConnection.on('ReceiveAdminMessage', callback);
   }
 
   receiveAlert(callback:(user: string, message: string, reference:string) => void){

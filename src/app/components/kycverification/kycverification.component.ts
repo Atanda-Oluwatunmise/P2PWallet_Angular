@@ -29,6 +29,10 @@ export class KycverificationComponent {
   public unuploadeDocs: any;
   public imgElement: any;
   public kycResponseObj: any;
+  public rowidOne: any;
+  public rowidTwo: any;
+  public labelidOne: any;
+  public labelidTwo: any;
 
   constructor(private api: ApiService, private signalr: SignalrService) { }
 
@@ -52,12 +56,6 @@ export class KycverificationComponent {
         this.imgElement.style.display = "none";
         this.imgElement = document.getElementById("approvedImageHolder");
         this.imgElement.style.display = "";
-        // Swal.fire({
-        //   title: "Info!",
-        //   text: `KYC Documents ${res.data}`,
-        //   icon: "info",
-        //   confirmButtonColor: '#53277E'
-        // })
       }
     })
     this.getListsOfDocs();
@@ -69,11 +67,13 @@ export class KycverificationComponent {
         this.requiredDocs = res.data;
         for (let i = 0; i < this.requiredDocs.length; i++) {
           let label = document.createElement('label');
+          label.classList.add('d-none')
           label.id = `${this.requiredDocs[i].name}-label`;
           label.innerText = `${this.requiredDocs[i].name}`.toUpperCase();
           let row = document.createElement('div');
-          row.classList.add('form-group', 'pb-4', 'd-flex');
+          row.classList.add('form-group', 'pb-4', 'd-none');
           row.id = `${this.requiredDocs[i].name}-user`;
+
           row.innerHTML = `<input type="file" class="form-control d-flex" id="${this.requiredDocs[i].name}">`;
           row.addEventListener('change', (event: any) => {
             let element = event.target || event.srcElement || event.currentTarget;
@@ -111,13 +111,15 @@ export class KycverificationComponent {
               console.log(res);
               if (res.status == true) {
                 this.unuploadeDocs = res.data;
-                console.log(this.unuploadeDocs[0].name); if (`${this.unuploadeDocs[i].name}-user` != row.id) {
+                for(let x = 0; x < this.unuploadeDocs.length; x++){
+                console.log(this.unuploadeDocs[0].name); if (`${this.unuploadeDocs[x].name}-user` == row.id) {
                   this.labelid = document.getElementById(`${this.requiredDocs[i].name}-label`);
-                  this.labelid.style.display = 'none';
+                  this.labelid.classList.remove('d-none');
                   //this.element= document.getElementById(row.id);
-                  row.classList.remove('d-flex');
-                  row.classList.add("d-none");
+                  row.classList.remove('d-none');
+                  row.classList.add("d-flex");
                 }
+              }
               }
 
               if (res.status != true && this.kycResponseObj.status != true) {

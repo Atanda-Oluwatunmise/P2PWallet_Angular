@@ -1,9 +1,14 @@
+.chatpage{
+    display: flex;
+    
+}
 
 .chatcontainer {
     /* margin: 60px auto; */
     background: #fff;
     padding: 0;
     height: 465px;
+    width: 678px !important;
     position: relative;
 
 }
@@ -51,6 +56,9 @@
 .search-box {
     background: #fafafa;
     padding: 10px 13px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .search-box .input-wrapper {
@@ -88,6 +96,10 @@ input:focus {
     transition: 0.3s ease;
 }
 
+.friend-drawer:hover{
+    cursor: pointer;
+}
+
 .friend-drawer--grey {
     background: #eee;
 }
@@ -114,6 +126,18 @@ input:focus {
     background: #53277E;
     cursor: pointer;
 }
+
+.active {
+    background: #53277E;
+    color: #fff;
+}
+.active .time {
+    color: #fff !important;
+}
+.active .text .text-muted{
+    color: #fff !important;
+}
+
 
 .friend-drawer--onhover:hover p,
 .friend-drawer--onhover:hover h6,
@@ -142,6 +166,18 @@ hr {
     border-radius: 9px;
     position: relative;
     animation: fadeIn 1s ease-in;
+}
+
+.chat-bubble span{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 11px;
+    color: #333;
+}
+
+.offset-md-9 .chat-bubble--right span{
+    color: #fff !important;
 }
 
 .chat-bubble:after {
@@ -218,7 +254,6 @@ hr {
     cursor: pointer;
     color: #53277E;
 }
-
 #chatPanel{
     height: 335px;
     overflow-y: scroll;
@@ -226,4 +261,28 @@ hr {
 
 #chatPanel .row {
     --bs-gutter-x: 0 !important;
+}
+
+.sideContainer{
+    width: 322px !important;
+    height: 465px !important;
+    overflow-y: scroll;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .sideContainer{
+        display: none;
+    }
+}
+
+@media (min-width: 768px){
+.col-md-3 {
+    flex: none;
+    width: fit-content !important;
+}
+.offset-md-9 {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
 }
